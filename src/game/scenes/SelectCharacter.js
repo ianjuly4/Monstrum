@@ -25,9 +25,7 @@ export class SelectCharacter extends Scene{
     gameState = {}
 
     create ()
-    {
-        
-        const {width, height} = this.scale
+    {   const {width, height} = this.scale
 
         this.add.image(0,0,'sky')
             .setOrigin(0,0)
@@ -71,12 +69,30 @@ export class SelectCharacter extends Scene{
         const pinkMonster = this.physics.add.sprite(190, 470, 'pinkmonster')
             .setScale(3)
             .setInteractive()
+
+        pinkMonster.on('pointerdown', ()=>{
+            this.registry.set('selectedCharacter', 'pinkmonster');
+            this.scene.start('Cinematic');
+        })
+        
         const whiteMonster = this.physics.add.sprite(590, 470, 'whitemonster')
             .setScale(3)
             .setInteractive()
+        whiteMonster.on('pointerdown', ()=>{
+            this.registry.set('selectedCharacter', 'whitemonster')
+            this.scene.start('Cinematic')
+        })
+
         const blueMonster = this.physics.add.sprite(990, 470, 'bluemonster')
             .setScale(3)
             .setInteractive()
+        
+        blueMonster.on('pointerdown', ()=>{
+                this.registry.set('selectedCharacter', 'bluemonster')
+                this.scene.start('Cinematic')
+            })
+        
+
         pinkMonster.setCollideWorldBounds(true)
         whiteMonster.setCollideWorldBounds(true)
 
@@ -96,4 +112,6 @@ export class SelectCharacter extends Scene{
     update(){
         this.bgClouds.tilePositionX += 0.2
     }
+   
+
 }
