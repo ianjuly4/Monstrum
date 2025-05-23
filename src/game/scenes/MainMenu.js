@@ -47,9 +47,18 @@ export class MainMenu extends Scene
             align: 'center'
         }).setOrigin(0.5).setInteractive();
 
-        newGameText.on('pointerdown', ()=>{
-            this.scene.start('SelectCharacter')
-        })
+  
+        newGameText.on('pointerover', () => {
+            newGameText.setStyle({ fill: 'brown' }); 
+        });
+        
+        newGameText.on('pointerout', () => {
+            newGameText.setStyle({ fill: '#ffffff' }); 
+        });
+        
+        newGameText.on('pointerdown', () => {
+            this.scene.start('SelectCharacter');
+        });
 
         this.add.text(512, 340, "Load Game", {
             fontFamily: 'Arial Black', fontSize: 28, color: '#ffffff',
@@ -62,12 +71,6 @@ export class MainMenu extends Scene
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
         }).setOrigin(0.5);
-
-        this.input.once('pointerdown', () => {
-
-            this.scene.start('Game');
-
-        });
     }
     update(){
         this.bgClouds.tilePositionX += 0.2
