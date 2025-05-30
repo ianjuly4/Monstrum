@@ -24,6 +24,7 @@ export class SelectCharacter extends Scene {
         //monster attacks
         this.load.spritesheet('pinkmonster_swordAttack2', 'assets/swordAttacks/Attack2.png', {frameWidth:42, frameHeight:42})
         this.load.spritesheet('pinkmonster_swordAttack1', 'assets/swordAttacks/Attack1.png', {frameWidth:42, frameHeight: 42})
+        this.load.spritesheet('pinkmonster_meleAttack1', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack2_6.png', {frameWidth: 32, frameHeight: 32})
         //spritesheets
         this.load.spritesheet('pinkmonster_idle', 'assets/heros/1 Pink_Monster/Pink_Monster_Idle_4.png',{frameWidth:128/4, frameHeight:32})
         //other Effects
@@ -69,13 +70,13 @@ export class SelectCharacter extends Scene {
 
         // Monsters
         this.gameState.monsters = {
-            pinkMonster: this.physics.add.sprite(190, 470, 'pinkmonster').setScale(3).setInteractive(),
-            whiteMonster: this.physics.add.sprite(590, 470, 'whitemonster').setScale(3).setInteractive(),
-            blueMonster: this.physics.add.sprite(990, 470, 'bluemonster').setScale(3).setInteractive()
+            pinkMonster: this.add.sprite(190, 515, 'pinkmonster').setScale(3).setOrigin(0.5, 1).setInteractive(),
+            whiteMonster: this.add.sprite(590, 515, 'whitemonster').setScale(3).setOrigin(0.5, 1).setInteractive(),
+            blueMonster: this.add.sprite(990, 515, 'bluemonster').setScale(3).setOrigin(0.5, 1).setInteractive()
         };
         pinkMonsterSpecial(this)
         this.gameState.special = 100
-        this.gameState.isUsingSpecial = false
+        this.gameState.debugMode = true
 
         // Platform 
         const platforms = this.physics.add.staticGroup()
@@ -86,14 +87,15 @@ export class SelectCharacter extends Scene {
         platform.refreshBody()
         //collider
         Object.values(this.gameState.monsters).forEach(mon => {
-            mon.setCollideWorldBounds(true);
-            this.physics.add.collider(mon, platforms);
+            //mon.setCollideWorldBounds(true);
+            //this.physics.add.collider(mon, platforms);
         });
         
         // Interactions
         this.gameState.monsters.pinkMonster.on('pointerdown', () => {
-            this.createCharacterBox(400, 150, 400, 250, 'The Titan Knight:\nStrong and brave knight.\nClose-range melee attacks.', 'pinkmonster');
-           
+            this.createCharacterBox(400, 150, 400, 250, 'The Titan Knight:\nStrong and brave knight.\nClose-range melee attacks.', 'pinkMonster');
+            console.log('Height:', this.selectedMonster.height); 
+
         });
 
         this.gameState.monsters.whiteMonster.on('pointerdown', () => {
@@ -151,7 +153,7 @@ export class SelectCharacter extends Scene {
         this.optionButtons.forEach(btn => btn.destroy());
         this.optionButtons = [];
         this.selectedMonster = this.gameState.monsters[characterKey];
-
+        //console.log(this.selectedMonster.texture.key)
 
         // Box background
         this.textBox = this.add.graphics();
@@ -169,47 +171,77 @@ export class SelectCharacter extends Scene {
         });
 
         // Buttons
-        const attack1Btn = this.add.text(x + 10, y + 70, 'Sword Attack 1', {
+        const meleAttackBtn = this.add.text(x + 10, y + 70, 'Mele Attack',{
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setInteractive();
+    
+        const attack1Btn = this.add.text(x + 10, y + 100, 'Sword Attack 1', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setInteractive();
 
-        const attack2Btn = this.add.text(x + 10, y + 100, 'Sword Attack 2', {
+        const attack2Btn = this.add.text(x + 10, y + 130, 'Sword Attack 2', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setInteractive();
 
-        const specialBtn = this.add.text(x + 10, y + 130, 'Special', {
+        const specialBtn = this.add.text(x + 10, y + 160, 'Special', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setInteractive();
 
-        const chooseBtn = this.add.text(x + 10, y + 160, ' Select This Monster?', {
+        const chooseBtn = this.add.text(x + 10, y + 190, ' Select This Monster?', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setInteractive();
+
+        meleAttackBtn.on('pointerdown', () => {
+            const monster = this.gameState.monsters.pinkMonster;
+        
+            if (monster.scaleX > 3|| monster.scaleY > 3) {  
+                monster.setScale(3);
+                monster.setPosition(190, 515);
+            }
+        
+            setMonsterAnimation(this, monster, 'pinkmonster_meleAttack1', 'meleAttack1');
+        });
 
         attack1Btn.on('pointerdown', () => {
             const monster = this.gameState.monsters.pinkMonster;
         
-            if (monster.scale > 3) {  // properly checking scale
+            if (monster.scaleX > 3|| monster.scaleY > 3) {  
                 monster.setScale(3);
-                monster.setPosition(190, 470);
+                monster.setPosition(190, 515);
             }
         
             setMonsterAnimation(this, monster, 'pinkmonster_swordAttack1', 'swordAttack1');
         });
         
         attack2Btn.on('pointerdown', ()=>{
-            setMonsterAnimation(this, this.gameState.monsters.pinkMonster, 'pinkmonster_swordAttack2', 'swordAttack2')
+            const monster = this.gameState.monsters.pinkMonster;
+            if(monster.scaleX > 3 || monster.scaleY > 3){
+                //monster.setOrigin(0.5, 1)
+                //monster.setOffset(0, 0);
+                monster.setScale(3);
+                monster.setPosition(190, 515)
+            }
+            setMonsterAnimation(this, monster, 'pinkmonster_swordAttack2', 'swordAttack2')
         })
 
         specialBtn.on('pointerdown', () => {
+            const monster = this.gameState.monsters.pinkMonster;
+            console.log(this.gameState.monsters.pinkMonster.x, this.gameState.monsters.pinkMonster.y)
+            //monster.setOrigin(0.5, 1)
+            //monster.setOffset(0, 0);
             pinkMonsterSpecial(this, true)
+          
+            //console.log(this.gameState.monsters.pinkMonster.frameHeight, this.gameState.monsters.pinkMonster.frameWidth)
         });
 
 
@@ -218,27 +250,33 @@ export class SelectCharacter extends Scene {
             this.scene.start('Cinematic');
         });
 
-        this.optionButtons = [attack1Btn,attack2Btn, specialBtn, chooseBtn];
+        this.optionButtons = [meleAttackBtn,attack1Btn,attack2Btn, specialBtn, chooseBtn];
         this.selectedOptionIndex = 0;
         this.updateButtonHighlight();
     }
+
     clearCharacterBox() {
+    
         if (this.textBox) this.textBox.destroy();
         if (this.textText) this.textText.destroy();
         this.optionButtons.forEach(btn => btn.destroy());
         this.optionButtons = [];
-    
         if (this.selectedMonster) {
             const key = Object.keys(this.gameState.monsters).find(k => this.gameState.monsters[k] === this.selectedMonster);
-    
+            
             // Reset pink monster only if selected
             if (key === 'pinkMonster') {
-                this.selectedMonster.setScale(3);
-                this.selectedMonster.setTexture('pinkmonster_idle', 0);
-                this.selectedMonster.setPosition(190, 470);
-                this.selectedMonster.anims.play('pinkmonster_idle', true);
+                if (this.selectedMonster.scaleX > 3 || this.selectedMonster.scaleY > 3) {
+                    console.log(this.selectedMonster.x, this.selectedMonster.y)
+                    this.selectedMonster.setPosition(190,515);
+                    this.selectedMonster.setScale(3) 
+                    }else{
+                    this.selectedMonster.anims.stop();
+                    this.selectedMonster.setTexture('pinkmonster');
+                    this.selectedMonster.setPosition(190,515); 
+                    }
+               
             } else {
-                // Fallback for other monsters
                 this.selectedMonster.setTexture(key.toLowerCase());
             }
     

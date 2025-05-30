@@ -1,6 +1,5 @@
 export function setMonsterAnimation(scene, monster, textureKey, animKey) {
-    if (!monster) return;
-
+    if (!scene || !scene.time || !monster) return;
     // Get current bottom Y position (to keep feet fixed)
     const bottomY = monster.y + monster.displayHeight * (1 - monster.originY);
 
