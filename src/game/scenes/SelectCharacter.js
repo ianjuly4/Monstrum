@@ -1,8 +1,11 @@
+//SelectCharacter.js
 import { Scene } from "phaser";
 import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
 import { pinkMonsterAnimations } from "../utilities/pinkMonsterAnimations";
 import { startIdleTimer } from "../utilities/startIdleTimer";
 import {pinkMonsterSpecial} from "../utilities/pinkMonsterSpecial"
+import { createCharacterBox } from "../utilities/createCharacterBox";
+
 
 export class SelectCharacter extends Scene {
     constructor() {
@@ -94,17 +97,17 @@ export class SelectCharacter extends Scene {
         
         // Interactions
         this.gameState.monsters.pinkMonster.on('pointerdown', () => {
-            this.createCharacterBox(400, 150, 400, 250, 'The Titan Knight:\nStrong and brave knight.\nClose-range melee attacks.', 'pinkMonster');
+            createCharacterBox(this, 400, 100, 400, 300, 'The Titan Knight: A strong, brave, and chivalrous warrior who has mastered the way of the sword. Specializes in powerful close-range sword and melee attacks. Cursed with the ability to transform into a Titan.', 'pinkMonster');
             console.log('Height:', this.selectedMonster.height); 
 
         });
 
         this.gameState.monsters.whiteMonster.on('pointerdown', () => {
-            this.createCharacterBox(400, 250, 360, 180, 'White Monster:\nWise mage.\nRanged magical attacks.', 'whitemonster');
+            createCharacterBox(this, 400, 100, 400, 250, 'White Monster:\nWise mage.\nRanged magical attacks.', 'whitemonster');
         });
 
         this.gameState.monsters.blueMonster.on('pointerdown', () => {
-            this.createCharacterBox(400, 250, 360, 180, 'Blue Monster:\nAgile and fast fighter.\nHigh-speed combos.', 'bluemonster');
+            createCharacterBox(this, 400, 100, 400, 250, 'Blue Monster:\nAgile and fast fighter.\nHigh-speed combos.', 'bluemonster');
         });
 
         // Keyboard input
@@ -147,124 +150,7 @@ export class SelectCharacter extends Scene {
         });
     }
 
-    createCharacterBox(x, y, width, height, text, characterKey) {
-        // Remove old UI
-        if (this.textBox) this.textBox.destroy();
-        if (this.textText) this.textText.destroy();
-        this.optionButtons.forEach(btn => btn.destroy());
-        this.optionButtons = [];
-        this.selectedMonster = this.gameState.monsters[characterKey];
-        //console.log(this.selectedMonster.texture.key)
-
-        // Box background
-        this.textBox = this.add.graphics();
-        this.textBox.fillStyle(0x000000, 0.7);
-        this.textBox.fillRoundedRect(x, y, width, height, 10);
-        this.textBox.lineStyle(2, 0xffffff);
-        this.textBox.strokeRoundedRect(x, y, width, height, 10);
-
-        // Text
-        this.textText = this.add.text(x + 10, y + 5, text, {
-            fontFamily: 'Arial',
-            fontSize: '16px',
-            color: '#ffffff',
-            wordWrap: { width: width - 20 }
-        });
-
-        // Buttons
-        const meleAttackBtn = this.add.text(x + 10, y + 70, 'Mele Attack',{
-            fontSize: '18px',
-            backgroundColor: '#222222',
-            padding: { x: 8, y: 4 }
-        }).setInteractive();
     
-        const attack1Btn = this.add.text(x + 10, y + 100, 'Sword Attack 1', {
-            fontSize: '18px',
-            backgroundColor: '#222222',
-            padding: { x: 8, y: 4 }
-        }).setInteractive();
-
-        const attack2Btn = this.add.text(x + 10, y + 130, 'Sword Attack 2', {
-            fontSize: '18px',
-            backgroundColor: '#222222',
-            padding: { x: 8, y: 4 }
-        }).setInteractive();
-
-        const specialBtn = this.add.text(x + 10, y + 160, 'Special', {
-            fontSize: '18px',
-            backgroundColor: '#222222',
-            padding: { x: 8, y: 4 }
-        }).setInteractive();
-
-        const chooseBtn = this.add.text(x + 10, y + 190, ' Select This Monster?', {
-            fontSize: '18px',
-            backgroundColor: '#222222',
-            padding: { x: 8, y: 4 }
-        }).setInteractive();
-
-        const exitBtn = this.add.text(x + 10, y + 220, ' Exit?', {
-            fontSize: '18px',
-            backgroundColor: '#222222',
-            padding: { x: 8, y: 4 }
-        }).setInteractive();
-
-        meleAttackBtn.on('pointerdown', () => {
-            const monster = this.gameState.monsters.pinkMonster;
-        
-            if (monster.scaleX > 3|| monster.scaleY > 3) {  
-                monster.setScale(3);
-                monster.setPosition(190, 515);
-            }
-        
-            setMonsterAnimation(this, monster, 'pinkmonster_meleAttack2', 'meleAttack2');
-        });
-
-        attack1Btn.on('pointerdown', () => {
-            const monster = this.gameState.monsters.pinkMonster;
-        
-            if (monster.scaleX > 3|| monster.scaleY > 3) {  
-                monster.setScale(3);
-                monster.setPosition(190, 515);
-            }
-        
-            setMonsterAnimation(this, monster, 'pinkmonster_swordAttack1', 'swordAttack1');
-        });
-        
-        attack2Btn.on('pointerdown', ()=>{
-            const monster = this.gameState.monsters.pinkMonster;
-            if(monster.scaleX > 3 || monster.scaleY > 3){
-                //monster.setOrigin(0.5, 1)
-                //monster.setOffset(0, 0);
-                monster.setScale(3);
-                monster.setPosition(190, 515)
-            }
-            setMonsterAnimation(this, monster, 'pinkmonster_swordAttack2', 'swordAttack2')
-        })
-
-        specialBtn.on('pointerdown', () => {
-            const monster = this.gameState.monsters.pinkMonster;
-            console.log(this.gameState.monsters.pinkMonster.x, this.gameState.monsters.pinkMonster.y)
-            //monster.setOrigin(0.5, 1)
-            //monster.setOffset(0, 0);
-            pinkMonsterSpecial(this, true)
-          
-            //console.log(this.gameState.monsters.pinkMonster.frameHeight, this.gameState.monsters.pinkMonster.frameWidth)
-        });
-
-
-        chooseBtn.on('pointerdown', () => {
-            this.registry.set('selectedCharacter', characterKey);
-            this.scene.start('Cinematic');
-        });
-        exitBtn.on('pointerdown', ()=>{
-            this.clearCharacterBox();
-        })
-
-        this.optionButtons = [meleAttackBtn,attack1Btn,attack2Btn, specialBtn, chooseBtn, exitBtn];
-        this.selectedOptionIndex = 0;
-        this.updateButtonHighlight();
-
-    }
         
 
     clearCharacterBox() {
