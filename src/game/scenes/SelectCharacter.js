@@ -21,10 +21,11 @@ export class SelectCharacter extends Scene {
         this.load.image('whitemonster', 'assets/heros/2 Owlet_Monster/Owlet_Monster.png');
         this.load.image('bluemonster', 'assets/heros/3 Dude_Monster/Dude_Monster.png');
 
-        //monster attacks
+        //pink monster attacks
         this.load.spritesheet('pinkmonster_swordAttack2', 'assets/swordAttacks/Attack2.png', {frameWidth:42, frameHeight:42})
         this.load.spritesheet('pinkmonster_swordAttack1', 'assets/swordAttacks/Attack1.png', {frameWidth:42, frameHeight: 42})
-        this.load.spritesheet('pinkmonster_meleAttack1', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack2_6.png', {frameWidth: 32, frameHeight: 32})
+        this.load.spritesheet('pinkmonster_meleAttack2', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack2_6.png', {frameWidth: 32, frameHeight: 32})
+        this.load.spritesheet('pinkmonster_meleAttack1', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack1_4.png',{frameWidth: 32, frameHeight: 32})
         //spritesheets
         this.load.spritesheet('pinkmonster_idle', 'assets/heros/1 Pink_Monster/Pink_Monster_Idle_4.png',{frameWidth:128/4, frameHeight:32})
         //other Effects
@@ -201,6 +202,12 @@ export class SelectCharacter extends Scene {
             padding: { x: 8, y: 4 }
         }).setInteractive();
 
+        const exitBtn = this.add.text(x + 10, y + 220, ' Exit?', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setInteractive();
+
         meleAttackBtn.on('pointerdown', () => {
             const monster = this.gameState.monsters.pinkMonster;
         
@@ -209,7 +216,7 @@ export class SelectCharacter extends Scene {
                 monster.setPosition(190, 515);
             }
         
-            setMonsterAnimation(this, monster, 'pinkmonster_meleAttack1', 'meleAttack1');
+            setMonsterAnimation(this, monster, 'pinkmonster_meleAttack2', 'meleAttack2');
         });
 
         attack1Btn.on('pointerdown', () => {
@@ -249,11 +256,16 @@ export class SelectCharacter extends Scene {
             this.registry.set('selectedCharacter', characterKey);
             this.scene.start('Cinematic');
         });
+        exitBtn.on('pointerdown', ()=>{
+            this.clearCharacterBox();
+        })
 
-        this.optionButtons = [meleAttackBtn,attack1Btn,attack2Btn, specialBtn, chooseBtn];
+        this.optionButtons = [meleAttackBtn,attack1Btn,attack2Btn, specialBtn, chooseBtn, exitBtn];
         this.selectedOptionIndex = 0;
         this.updateButtonHighlight();
+
     }
+        
 
     clearCharacterBox() {
     

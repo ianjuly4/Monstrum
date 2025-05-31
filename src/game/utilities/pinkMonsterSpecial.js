@@ -69,6 +69,7 @@ export function pinkMonsterSpecial(scene, triggered = false) {
                 if (debugMode) {
                     pinkMonster.setPosition(190, 515);
                     setMonsterAnimation(scene, pinkMonster, 'pinkmonster_meleAttack1', 'meleAttack1');
+                    setMonsterAnimation(scene, pinkMonster, 'pinkmonster_meleAttack2', 'meleAttack2')
                 } else {
                     pinkMonster.setPosition(pinkMonster.x, pinkMonster.y - 70);
                 }
