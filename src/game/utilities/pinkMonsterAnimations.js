@@ -1,4 +1,6 @@
 //pinkMonsterAnimations
+import { preload } from "./preload"
+
 export function pinkMonsterAnimations(scene){
 
     scene.anims.create({

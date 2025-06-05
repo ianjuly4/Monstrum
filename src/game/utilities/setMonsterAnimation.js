@@ -1,3 +1,5 @@
+
+
 export function setMonsterAnimation(scene, monster, textureKey, animKey) {
     if (!scene || !scene.time || !monster) return;
     // Get current bottom Y position (to keep feet fixed)

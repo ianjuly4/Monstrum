@@ -1,6 +1,7 @@
 //createCharacterBox
 import { setMonsterAnimation } from "./setMonsterAnimation";
 import { pinkMonsterSpecial } from "./pinkMonsterSpecial";
+import {whiteMonsterSpecial} from "./whiteMonsterSpecial"
 export function createCharacterBox(scene, x, y, width, height, text, characterKey) {
         // Remove old UI
         if (scene.textBox) scene.textBox.destroy();
@@ -24,9 +25,8 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             color: '#ffffff',
             wordWrap: { width: width - 20 }
         });
-
+        // Pinkmonster Characterbox
         if(characterKey == 'pinkMonster'){
-
         // Buttons
         const meleAttackBtn = scene.add.text(x + width / 2, y + 100, 'Melee',{
             fontSize: '18px',
@@ -120,5 +120,67 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         scene.selectedOptionIndex = 0;
         scene.updateButtonHighlight();
         }
+       
+    //White Monster Character Box
+    if(characterKey == 'whiteMonster'){
 
-    }
+        // Buttons
+        const meleAttackBtn = scene.add.text(x + width / 2, y + 100, 'Melee',{
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 },
+        }).setOrigin(0.5).setInteractive();
+    
+        const attack1Btn = scene.add.text(x + width / 2, y + 130, 'Stab ', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        const attack2Btn = scene.add.text(x + width / 2, y + 160, 'Slash ', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        const specialBtn = scene.add.text(x + width / 2, y + 190, 'Kami ha', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        const chooseBtn = scene.add.text(x + width / 2, y + 220, ' Select This Monster?', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        const exitBtn = scene.add.text(x + width / 2, y + 250, ' Exit?', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        
+        specialBtn.on('pointerdown', () => {
+            const monster = scene.gameState.monsters.whiteMonster;
+            whiteMonsterSpecial(scene, true)
+          
+            
+        });
+
+
+        chooseBtn.on('pointerdown', () => {
+            scene.registry.set('selectedCharacter', characterKey);
+            scene.scene.start('Cinematic');
+        });
+        exitBtn.on('pointerdown', ()=>{
+            scene.clearCharacterBox();
+        })
+
+        scene.optionButtons = [meleAttackBtn,attack1Btn,attack2Btn, specialBtn, chooseBtn, exitBtn];
+        scene.selectedOptionIndex = 0;
+        scene.updateButtonHighlight();
+        }
+      
+}
