@@ -7,6 +7,7 @@ import {pinkMonsterSpecial} from "../utilities/pinkMonsterSpecial"
 import { createCharacterBox } from "../utilities/createCharacterBox";
 import { preload } from "../utilities/preload";
 import { whiteMonsterAnimations } from "../utilities/whiteMonsterAnimations";
+import { magicAnimations } from "../utilities/magicAnimations";
 
 
 export class SelectCharacter extends Scene {
@@ -28,6 +29,7 @@ export class SelectCharacter extends Scene {
         pinkMonsterAnimations(this)
         whiteMonsterAnimations(this)
         startIdleTimer(this)
+        magicAnimations(this)
        
 
         // Background layers

@@ -10,6 +10,6 @@ export function startIdleTimer(scene) {
   scene.gameState.idleTimer = scene.time.delayedCall(30000, () => {
     scene.gameState.isIdle = true;
     setMonsterAnimation(scene, scene.gameState.monsters.pinkMonster, 'pinkmonster_idle', 'idle');
-    console.log('Idle started');
+    //console.log('Idle started');
   });
 }

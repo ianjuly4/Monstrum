@@ -31,11 +31,11 @@ export function preload() {
     this.load.image('lightningImpact3', 'assets/effects/Explosion_7/1/Explosion_5.png')
     
     //kameha charge effects
-    this.load.image('kameha1', 'assets/effects/Explosion_8/Explosion_1.png')
-    this.load.image('kameha2', 'assets/effects/Explosion_8/Explosion_2.png')
-    this.load.image('kameha3', 'assets/effects/Explosion_8/Explosion_3.png')
-    this.load.image('kameha4', 'assets/effects/Explosion_8/Explosion_4.png')
-    this.load.image('kameha5', 'assets/effects/Explosion_8/Explosion_5.png')
+    this.load.image('blueExplosion1', 'assets/effects/Explosion_8/Explosion_1.png')
+    this.load.image('blueExplosion2', 'assets/effects/Explosion_8/Explosion_2.png')
+    this.load.image('blueExplosion3', 'assets/effects/Explosion_8/Explosion_3.png')
+    this.load.image('blueExplosion4', 'assets/effects/Explosion_8/Explosion_4.png')
+    this.load.image('blueExplosion5', 'assets/effects/Explosion_8/Explosion_5.png')
     this.load.image('kamehaCharge', 'assets/magicAttacks/1 Magic/3.png')
 
 

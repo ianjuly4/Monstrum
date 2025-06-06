@@ -14,7 +14,7 @@ export function whiteMonsterAnimations(scene){
             {key: 'whitemonster_melee2', frame: 2},
             {key: 'whitemonster_melee2', frame: 4}
         ],
-            frameRate: 8,
+            frameRate: 3,
             repeat: -1 
     })
 }
