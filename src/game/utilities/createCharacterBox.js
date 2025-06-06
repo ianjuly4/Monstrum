@@ -2,6 +2,7 @@
 import { setMonsterAnimation } from "./setMonsterAnimation";
 import { pinkMonsterSpecial } from "./pinkMonsterSpecial";
 import {whiteMonsterSpecial} from "./whiteMonsterSpecial"
+
 export function createCharacterBox(scene, x, y, width, height, text, characterKey) {
         // Remove old UI
         if (scene.textBox) scene.textBox.destroy();
@@ -164,6 +165,7 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         
         specialBtn.on('pointerdown', () => {
             const monster = scene.gameState.monsters.whiteMonster;
+            //setMonsterAnimation(scene, monster, 'whitemonster_special', 'kameha')
             whiteMonsterSpecial(scene, true)
           
             

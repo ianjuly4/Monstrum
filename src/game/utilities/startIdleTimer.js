@@ -1,6 +1,6 @@
 // startIdleTimer.js
 import { setMonsterAnimation } from "./setMonsterAnimation.js";
-import { preload } from "./preload.js";
+
 
 export function startIdleTimer(scene) {
   if (scene.gameState.idleTimer) {

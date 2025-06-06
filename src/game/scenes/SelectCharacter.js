@@ -6,6 +6,7 @@ import { startIdleTimer } from "../utilities/startIdleTimer";
 import {pinkMonsterSpecial} from "../utilities/pinkMonsterSpecial"
 import { createCharacterBox } from "../utilities/createCharacterBox";
 import { preload } from "../utilities/preload";
+import { whiteMonsterAnimations } from "../utilities/whiteMonsterAnimations";
 
 
 export class SelectCharacter extends Scene {
@@ -25,6 +26,7 @@ export class SelectCharacter extends Scene {
     create() {
         const { width, height } = this.scale;
         pinkMonsterAnimations(this)
+        whiteMonsterAnimations(this)
         startIdleTimer(this)
        
 

@@ -1,5 +1,5 @@
 //pinkMonsterAnimations
-import { preload } from "./preload"
+
 
 export function pinkMonsterAnimations(scene){
 
