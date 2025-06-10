@@ -5,8 +5,8 @@ export function magicAnimations(scene) {
         frames: scene.anims.generateFrameNumbers('lazer_beam1', {
             start: 0, end: 7
         }),
-        frameRate: 15,
-        repeat: -1
+        frameRate: 4,
+        repeat: 0
     });
 
 }
