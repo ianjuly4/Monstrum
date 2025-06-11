@@ -48,7 +48,6 @@ export function whiteMonsterSpecial(scene, triggered = false) {
       frameLoop.remove();
       chargeBallEffect.destroy();
 
-      // Create and play animated beam
       const beam = scene.add.sprite(
         whiteMonster.x + 40,
         whiteMonster.y - 30,

@@ -8,6 +8,7 @@ import { createCharacterBox } from "../utilities/createCharacterBox";
 import { preload } from "../utilities/preload";
 import { whiteMonsterAnimations } from "../utilities/whiteMonsterAnimations";
 import { magicAnimations } from "../utilities/magicAnimations";
+import { clearCharacterBox } from "../utilities/clearCharacterBox";
 
 
 export class SelectCharacter extends Scene {
@@ -30,6 +31,7 @@ export class SelectCharacter extends Scene {
         whiteMonsterAnimations(this)
         startIdleTimer(this)
         magicAnimations(this)
+        clearCharacterBox(this)
        
 
         // Background layers
@@ -83,7 +85,7 @@ export class SelectCharacter extends Scene {
         });
 
         this.gameState.monsters.whiteMonster.on('pointerdown', () => {
-            createCharacterBox(this, 400, 100, 400, 300, 'White Monster:\nWise mage.\nRanged magical attacks.', 'whiteMonster');
+            createCharacterBox(this, 400, 100, 400, 300, 'The Arcane Mage: A mysterious and ancient spellcaster who commands elemental forces with ease. Specializes in medium-range magical attacks. His curse allows him to create a massive energy blast.', 'whiteMonster');
         });
 
         this.gameState.monsters.blueMonster.on('pointerdown', () => {
@@ -112,7 +114,7 @@ export class SelectCharacter extends Scene {
             const clickedOnMonster = Object.values(this.gameState.monsters).includes(currentlyOver[0]);
         
             if (!clickedOnUI && !clickedOnMonster) {
-                this.clearCharacterBox();
+                clearCharacterBox(this)
             }
         });
         
