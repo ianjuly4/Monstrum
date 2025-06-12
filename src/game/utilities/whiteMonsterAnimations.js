@@ -26,5 +26,13 @@ export function whiteMonsterAnimations(scene){
             frameRate: 5,
             repeat: 0
     })
+
+    scene.anims.create({
+        key: 'petrification_attack1',
+        frames: scene.anims.generateFrameNumbers('whitemonster_melee2',{
+            start: 0, end: 2}),
+            frameRate: 8,
+            repeat: 0
+    })
     
 }

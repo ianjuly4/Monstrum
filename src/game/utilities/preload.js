@@ -24,6 +24,7 @@ export function preload() {
     this.load.spritesheet('lazer_beam1', 'assets/magicAttacks/1 Magic/3.png',{frameWidth: 576/8, frameHeight: 72})
     this.load.spritesheet('lazer_ball1', 'assets/magicAttacks/1 Magic/4_2.png', {frameWidth: 288/4, frameHeight: 72 })
     this.load.spritesheet('fire_ball', 'assets/magicAttacks/1 Magic/4.png', {frameWidth: 288/4, frameHeight: 72})
+    this.load.spritesheet('petrification_attack', 'assets/magicAttacks/1 Magic/7.png', {frameWidth: 576/8, frameHeight: 72})
     //lightning Effects
     this.load.image('lightningArrow', 'assets/effects/Explosion_7/1/Explosion_1.png')
     this.load.image('lightningArrow2', 'assets/effects/Explosion_7/1/Explosion_2.png')

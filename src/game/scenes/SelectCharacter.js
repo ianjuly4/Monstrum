@@ -80,7 +80,7 @@ export class SelectCharacter extends Scene {
         // Interactions
         this.gameState.monsters.pinkMonster.on('pointerdown', () => {
             createCharacterBox(this, 400, 100, 400, 300, 'The Titan Knight: A strong, brave, and chivalrous warrior who has mastered the way of the sword. Specializes in powerful close-range sword and melee attacks. Cursed with the ability to transform into a Titan.', 'pinkMonster');
-            console.log('Height:', this.selectedMonster.height); 
+            //console.log('Height:', this.selectedMonster.height); 
 
         });
 

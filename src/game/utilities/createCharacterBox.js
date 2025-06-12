@@ -4,6 +4,7 @@ import { pinkMonsterSpecial } from "./pinkMonsterSpecial";
 import {whiteMonsterSpecial} from "./whiteMonsterSpecial";
 import { clearCharacterBox } from "./clearCharacterBox";
 import { whiteMonsterFireball } from "./whiteMonsterFireball";
+import { whiteMonsterPetrification } from "./whiteMonsterPetrification";
 
 export function createCharacterBox(scene, x, y, width, height, text, characterKey) {
         // Remove old UI
@@ -134,19 +135,19 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             padding: { x: 8, y: 4 },
         }).setOrigin(0.5).setInteractive();
     
-        const attack2Btn = scene.add.text(x + width / 2, y + 130, 'Stab ', {
+        const attack2Btn = scene.add.text(x + width / 2, y + 130, 'Petrification ', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
 
-        const attack3Btn = scene.add.text(x + width / 2, y + 160, 'Slash ', {
+        const attack3Btn = scene.add.text(x + width / 2, y + 160, 'Falling Stars ', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
 
-        const specialBtn = scene.add.text(x + width / 2, y + 190, 'Kami ha', {
+        const specialBtn = scene.add.text(x + width / 2, y + 190, 'Kameha', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
@@ -169,6 +170,10 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             whiteMonsterFireball(scene, true)
 
         })
+        attack2Btn.on('pointerdown', ()=>{
+            whiteMonsterPetrification(scene, true)
+        })
+
         specialBtn.on('pointerdown', () => {
            
           

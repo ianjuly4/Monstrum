@@ -17,4 +17,12 @@ export function magicAnimations(scene) {
             repeat: -1
     })
 
+    scene.anims.create({
+        key: 'petrification',
+        frames: scene.anims.generateFrameNumbers('petrification_attack',{
+            start: 0, end: 7}),
+            frameRate: 5,
+            repeat: 0
+    })
+
 }
