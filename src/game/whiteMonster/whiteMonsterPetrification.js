@@ -1,7 +1,7 @@
-import { setMonsterAnimation } from "./setMonsterAnimation";
+import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
 
 export function whiteMonsterPetrification(scene, triggered = false){
-     const { monsters, debugMode } = scene.gameState;
+     const { monsters } = scene.gameState;
       const whiteMonster = monsters?.whiteMonster;
     
       if (!whiteMonster) return;
@@ -10,7 +10,7 @@ export function whiteMonsterPetrification(scene, triggered = false){
     
         setMonsterAnimation(scene, whiteMonster, 'whitemonster_melee2', 'petrification_attack1');
     
-        whiteMonster.on(Phaser.Animations.Events.ANIMATION_COMPLETE, function (){
+        whiteMonster.once(Phaser.Animations.Events.ANIMATION_COMPLETE, function (){
        
         const petrification = scene.add.sprite(
           whiteMonster.x + 40,

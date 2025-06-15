@@ -1,4 +1,5 @@
-import { setMonsterAnimation } from "./setMonsterAnimation";
+import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
+
 export function pinkMonsterSpecial(scene, triggered = false) {
     const { special, monsters, isUsingSpecial, debugMode } = scene.gameState;
     const pinkMonster = monsters?.pinkMonster;

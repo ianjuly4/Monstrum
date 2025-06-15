@@ -1,14 +1,15 @@
 //SelectCharacter.js
 import { Scene } from "phaser";
 import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
-import { pinkMonsterAnimations } from "../utilities/pinkMonsterAnimations";
+import { pinkMonsterAnimations } from "../pinkMonster/pinkMonsterAnimations";
 import { startIdleTimer } from "../utilities/startIdleTimer";
-import {pinkMonsterSpecial} from "../utilities/pinkMonsterSpecial"
+import {pinkMonsterSpecial} from "../pinkMonster/pinkMonsterSpecial"
 import { createCharacterBox } from "../utilities/createCharacterBox";
 import { preload } from "../utilities/preload";
-import { whiteMonsterAnimations } from "../utilities/whiteMonsterAnimations";
+import { whiteMonsterAnimations } from "../whiteMonster/whiteMonsterAnimations";
 import { magicAnimations } from "../utilities/magicAnimations";
 import { clearCharacterBox } from "../utilities/clearCharacterBox";
+
 
 
 export class SelectCharacter extends Scene {

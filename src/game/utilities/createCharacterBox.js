@@ -1,10 +1,11 @@
 //createCharacterBox
 import { setMonsterAnimation } from "./setMonsterAnimation";
-import { pinkMonsterSpecial } from "./pinkMonsterSpecial";
-import {whiteMonsterSpecial} from "./whiteMonsterSpecial";
+import { pinkMonsterSpecial } from "../pinkMonster/pinkMonsterSpecial";
+import {whiteMonsterSpecial} from "../whiteMonster/whiteMonsterSpecial";
 import { clearCharacterBox } from "./clearCharacterBox";
-import { whiteMonsterFireball } from "./whiteMonsterFireball";
-import { whiteMonsterPetrification } from "./whiteMonsterPetrification";
+import { whiteMonsterFireball } from "../whiteMonster/whiteMonsterFireball";
+import { whiteMonsterPetrification } from "../whiteMonster/whiteMonsterPetrification";
+import { whiteMonsterLazerBeam } from "../whiteMonster/whiteMonsterLazerBeam";
 
 export function createCharacterBox(scene, x, y, width, height, text, characterKey) {
         // Remove old UI
@@ -141,13 +142,13 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
 
-        const attack3Btn = scene.add.text(x + width / 2, y + 160, 'Falling Stars ', {
+        const attack3Btn = scene.add.text(x + width / 2, y + 160, 'Lazerbeam ', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
 
-        const specialBtn = scene.add.text(x + width / 2, y + 190, 'Kameha', {
+        const specialBtn = scene.add.text(x + width / 2, y + 190, 'Falling Stars', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
@@ -166,20 +167,18 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         }).setOrigin(0.5).setInteractive();
 
         attack1Btn.on('pointerdown', ()=>{
-          
             whiteMonsterFireball(scene, true)
 
         })
         attack2Btn.on('pointerdown', ()=>{
             whiteMonsterPetrification(scene, true)
         })
+        attack3Btn.on('pointerdown', ()=>{
+            whiteMonsterLazerBeam(scene, true)
+        })
 
-        specialBtn.on('pointerdown', () => {
-           
-          
-            whiteMonsterSpecial(scene, true)
-          
-            
+        specialBtn.on('pointerdown', () => {  
+            whiteMonsterSpecial(scene, true)    
         });
 
 

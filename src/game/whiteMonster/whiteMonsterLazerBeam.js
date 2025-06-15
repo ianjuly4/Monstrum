@@ -1,6 +1,6 @@
-import { setMonsterAnimation } from "./setMonsterAnimation";
+import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
 
-export function whiteMonsterSpecial(scene, triggered = false) {
+export function whiteMonsterLazerBeam(scene, triggered = false) {
   const { special, monsters, isUsingSpecial, debugMode } = scene.gameState;
   const whiteMonster = monsters?.whiteMonster;
 
