@@ -1,23 +1,15 @@
 import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
 
-export function pinkMonsterSpecial(scene, triggered = false) {
-    const { special, monsters, isUsingSpecial, debugMode } = scene.gameState;
+export function pinkMonsterSpecial(scene, selected = false) {
+    const {  monsters} = scene.gameState;
     const pinkMonster = monsters?.pinkMonster;
 
     if (!pinkMonster) return;
 
-    const hasPhysics = !!pinkMonster.body;
-    const isOnGround = hasPhysics ? (pinkMonster.body.blocked.down || pinkMonster.body.touching.down) : true;
     const camera = scene.cameras.main;
 
-    const canUseSpecial = debugMode || (special >= 50 && !isUsingSpecial && isOnGround);
-
-    if (triggered && canUseSpecial) {
-        scene.gameState.isUsingSpecial = true;
-        if (!debugMode) {
-            scene.gameState.special -= 50;
-        }
-
+    if (selected) {
+     
         pinkMonster.anims.stop();
         pinkMonster.setTexture('pinkmonster');
 
@@ -67,14 +59,12 @@ export function pinkMonsterSpecial(scene, triggered = false) {
                 pinkMonster.setScale(8);
                 pinkMonster.setOrigin(0.5, 1);
 
-                if (debugMode) {
+                
                     pinkMonster.setPosition(190, 515);
                     setMonsterAnimation(scene, pinkMonster, 'pinkmonster_meleAttack1', 'meleAttack1');
                     setMonsterAnimation(scene, pinkMonster, 'pinkmonster_meleAttack2', 'meleAttack2')
-                } else {
-                    pinkMonster.setPosition(pinkMonster.x, pinkMonster.y - 70);
-                }
-
+             
+                
                 setTimeout(() => {
                     blackout.destroy();
                     flash.destroy();
@@ -85,4 +75,5 @@ export function pinkMonsterSpecial(scene, triggered = false) {
 
         playLightning();
     }
+
 }

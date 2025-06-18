@@ -61,10 +61,7 @@ export class SelectCharacter extends Scene {
             whiteMonster: this.add.sprite(590, 515, 'whitemonster').setScale(3).setOrigin(0.5, 1).setInteractive(),
             blueMonster: this.add.sprite(990, 515, 'bluemonster').setScale(3).setOrigin(0.5, 1).setInteractive()
         };
-        pinkMonsterSpecial(this)
-        this.gameState.special = 100
-        this.gameState.debugMode = true
-
+ 
         // Platform 
         const platforms = this.physics.add.staticGroup()
         const platform = platforms.create(600, 530, 'grass_foreground')
@@ -72,12 +69,8 @@ export class SelectCharacter extends Scene {
             .setVisible(false)
 
         platform.refreshBody()
-        //collider
-        Object.values(this.gameState.monsters).forEach(mon => {
-            //mon.setCollideWorldBounds(true);
-            //this.physics.add.collider(mon, platforms);
-        });
-        
+       
+       
         // Interactions
         this.gameState.monsters.pinkMonster.on('pointerdown', () => {
             createCharacterBox(this, 400, 100, 400, 300, 'The Titan Knight: A strong, brave, and chivalrous warrior who has mastered the way of the sword. Specializes in powerful close-range sword and melee attacks. Cursed with the ability to transform into a Titan.', 'pinkMonster');
@@ -86,17 +79,24 @@ export class SelectCharacter extends Scene {
         });
 
         this.gameState.monsters.whiteMonster.on('pointerdown', () => {
-            createCharacterBox(this, 400, 100, 400, 300, 'The Arcane Mage: A mysterious and ancient spellcaster who commands elemental forces with ease. Specializes in medium-range magical attacks. His curse allows him to create a massive energy blast.', 'whiteMonster');
+            createCharacterBox(this, 400, 100, 400, 300, 'The Arcane Mage: A mysterious and ancient spellcaster who commands elemental forces with ease. Specializes in medium-range magical attacks. His cursed magic unleashes a cataclysmic starfall, raining destruction from the heavens.', 'whiteMonster');
         });
 
         this.gameState.monsters.blueMonster.on('pointerdown', () => {
             createCharacterBox(this, 400, 100, 400, 250, 'Blue Monster:\nAgile and fast fighter.\nHigh-speed combos.', 'bluemonster');
         });
 
+        
+
         // Keyboard input
+    
+     
+       
+
         this.input.keyboard.on('keydown-DOWN', () => {
             if (this.optionButtons.length === 0) return;
             this.selectedOptionIndex = (this.selectedOptionIndex + 1) % this.optionButtons.length;
+
             this.updateButtonHighlight();
         });
 
@@ -131,12 +131,13 @@ export class SelectCharacter extends Scene {
         this.optionButtons.forEach((btn, i) => {
             btn.setBackgroundColor(i === this.selectedOptionIndex ? '#4444ff' : '#222222');
         });
+
+        const selectedBtn = this.optionButtons[this.selectedOptionIndex];
+        if (selectedBtn && selectedBtn.description) {
+            this.textText.setText(selectedBtn.description);
+        } else {
+            this.textText.setText(this.originalCharacterDescription);
+        }
     }
 
-    
-        
-
-   
-    
-    
 }

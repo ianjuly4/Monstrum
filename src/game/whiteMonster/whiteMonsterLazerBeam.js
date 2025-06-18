@@ -1,23 +1,12 @@
 import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
 
-export function whiteMonsterLazerBeam(scene, triggered = false) {
-  const { special, monsters, isUsingSpecial, debugMode } = scene.gameState;
+export function whiteMonsterLazerBeam(scene, selected = false) {
+  const { monsters} = scene.gameState;
   const whiteMonster = monsters?.whiteMonster;
 
   if (!whiteMonster) return;
 
-  const hasPhysics = !!whiteMonster.body;
-  const isOnGround = hasPhysics
-    ? whiteMonster.body.blocked.down || whiteMonster.body.touching.down
-    : true;
-
-  const canUseSpecial = debugMode || (special >= 50 && !isUsingSpecial && isOnGround);
-
-  if (triggered && canUseSpecial) {
-    scene.gameState.isUsingSpecial = true;
-    if (!debugMode) {
-      scene.gameState.special -= 50;
-    }
+  if (selected ) {
 
     const chargeBallEffect = scene.add.image(
       whiteMonster.x + 30,

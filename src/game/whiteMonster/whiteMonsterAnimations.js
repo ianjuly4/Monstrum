@@ -34,5 +34,13 @@ export function whiteMonsterAnimations(scene){
             frameRate: 8,
             repeat: 0
     })
+
+    scene.anims.create({
+        key: 'fallingstars',
+        frames: scene.anims.generateFrameNumbers('fallingstars_attack',{
+            start: 0, end: 2}),
+            frameRate: 6,
+            repeat: 0
+    })
     
 }

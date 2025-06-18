@@ -25,4 +25,19 @@ export function magicAnimations(scene) {
             repeat: 0
     })
 
+    scene.anims.create({
+        key: 'stars_falling',
+        frames: scene.anims.generateFrameNumbers('stars_attack',{
+            start: 0, end: 3}),
+            frameRate: 8,
+            repeat: 0
+    })
+    scene.anims.create({
+        key: 'starsLanding',
+        frames: scene.anims.generateFrameNumbers('stars_landing',{
+            start:0, end:3}),
+            frameRate: 8,
+            repeat:0
+    })
+
 }
