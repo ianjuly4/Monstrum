@@ -6,6 +6,7 @@ import { clearCharacterBox } from "./clearCharacterBox";
 import { whiteMonsterFireball } from "../whiteMonster/whiteMonsterFireball";
 import { whiteMonsterPetrification } from "../whiteMonster/whiteMonsterPetrification";
 import { whiteMonsterLazerBeam } from "../whiteMonster/whiteMonsterLazerBeam";
+import { pinkMonsterIronFist } from "../pinkMonster/pinkMonsterIronFist";
 
 export function createCharacterBox(scene, x, y, width, height, text, characterKey) {
         // Remove old UI
@@ -36,37 +37,37 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         // Pinkmonster Characterbox
         if(characterKey == 'pinkMonster'){
         // Buttons
-        const ironFistBtn = scene.add.text(x + width / 2, y + 100, 'Iron Fist',{
+        const ironFistBtn = scene.add.text(x + width / 2, y + 130, 'Iron Fist',{
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 },
         }).setOrigin(0.5).setInteractive();
     
-        const piercingStabBtn = scene.add.text(x + width / 2, y + 130, 'Piercing Stab ', {
+        const piercingStabBtn = scene.add.text(x + width / 2, y + 160, 'Piercing Stab ', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
 
-        const crescentSlashBtn = scene.add.text(x + width / 2, y + 160, 'Crescent Slash ', {
+        const crescentSlashBtn = scene.add.text(x + width / 2, y + 190, 'Crescent Slash ', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
 
-        const titanRampageBtn = scene.add.text(x + width / 2, y + 190, 'Titan Rampage', {
+        const titanRampageBtn = scene.add.text(x + width / 2, y + 220, 'Titan Rampage', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
 
-        const chooseBtn = scene.add.text(x + width / 2, y + 220, ' Select This Monster?', {
+        const chooseBtn = scene.add.text(x + width / 2, y + 250, ' Select This Monster?', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
 
-        const exitBtn = scene.add.text(x + width / 2, y + 250, ' Exit?', {
+        const exitBtn = scene.add.text(x + width / 2, y + 280, ' Exit?', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
@@ -74,16 +75,10 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
 
         ironFistBtn.on('pointerdown', () => {
             const monster = scene.gameState.monsters.pinkMonster;
-        
-            if (monster.scaleX > 3|| monster.scaleY > 3) {  
-                monster.setScale(3);
-                monster.setPosition(190, 515);
-            }
-        
-            setMonsterAnimation(scene, monster, 'pinkmonster_meleAttack2', 'meleAttack2');
-            scene.textText.setText( 'A close-range heavy melee attack.');
+            pinkMonsterIronFist(scene, true)
+            scene.textText.setText('A brutal close-range punch that sends shockwaves through armor. \n• Damage: 25 Special Cost: 0\n• Type: Melee \n• Effects: Replenishes Special ');
         });
-        ironFistBtn.description = 'A close-range heavy melee punch. Dealing 25 Damage, Cost 0 Special ';
+        ironFistBtn.description = 'A brutal close-range punch that sends shockwaves through armor. \n• Damage: 25 Special Cost: 0\n• Type: Melee \n• Effects: Replenishes Special ';
 
         ironFistBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(ironFistBtn);
@@ -106,7 +101,8 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             scene.textText.setText('A swift stab dealing focused damage.')
         });
 
-        piercingStabBtn.description = 'Quick, focused stab attack, Dealing 35 Damage, Cost 15 Special.';
+        piercingStabBtn.description = 'A lightning-fast thrust aimed at weak points.\n• Damage: 35 Special Cost: 15 \n• Type: Weapon Attack \n• Effects: Shield breaker';
+
 
         piercingStabBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(piercingStabBtn);
@@ -128,7 +124,7 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             setMonsterAnimation(scene, monster, 'pinkmonster_swordAttack2', 'swordAttack2')
             
         })
-        crescentSlashBtn.description = 'A wide slash that hits multiple enemies.';
+        crescentSlashBtn.description = 'A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Produces a slash projectile';
 
         crescentSlashBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(crescentSlashBtn);
@@ -141,14 +137,12 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
 
         titanRampageBtn.on('pointerdown', () => {
             const monster = scene.gameState.monsters.pinkMonster;
-            //console.log(scene.gameState.monsters.pinkMonster.x, scene.gameState.monsters.pinkMonster.y)
-            //monster.setOrigin(0.5, 1)
-            //monster.setOffset(0, 0);
+            
             pinkMonsterSpecial(scene, true)
           
-            //console.log(this.gameState.monsters.pinkMonster.frameHeight, this.gameState.monsters.pinkMonster.frameWidth)
+            
         });
-        titanRampageBtn.description = 'Transforms into a Titan with devastating power.';
+        titanRampageBtn.description = 'Unleash your Titan form in a seismic smash, shattering the battlefield. \n• Damage: 80 Special Cost: 50\n• Type: Special\n• Effects: Deals area damage when transforming, immune to most attacks for 5 seconds.';
 
         titanRampageBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(titanRampageBtn);

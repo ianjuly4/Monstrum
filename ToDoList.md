@@ -3,9 +3,6 @@
     attack description
         stats for each attack
 2. finish pink monster select menu
-    attack description
-        stats for each attack
-    decide if we wanna change the special to a lightning quick sword attack similar to zenitsu(demon slayer)
     move pinkmonster attacks into their own files
         add 'swoosh' effects to sword attacks
 3. start and finish blue archer monster

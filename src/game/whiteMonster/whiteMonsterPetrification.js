@@ -1,12 +1,12 @@
 import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
 
-export function whiteMonsterPetrification(scene, triggered = false){
-     const { monsters } = scene.gameState;
-      const whiteMonster = monsters?.whiteMonster;
+export function whiteMonsterPetrification(scene, selected = false){
+    const { monsters } = scene.gameState;
+    const whiteMonster = monsters?.whiteMonster;
     
-      if (!whiteMonster) return;
+    if (!whiteMonster) return;
     
-      if (triggered) {
+    if (selected) {
     
         setMonsterAnimation(scene, whiteMonster, 'whitemonster_melee2', 'petrification_attack1');
     

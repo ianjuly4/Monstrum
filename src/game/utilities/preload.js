@@ -35,6 +35,9 @@ export function preload() {
     this.load.image('lightningImpact2', 'assets/effects/Explosion_7/1/Explosion_4.png')
     this.load.image('lightningImpact3', 'assets/effects/Explosion_7/1/Explosion_5.png')
 
+    //slash effects
+    this.load.image('')
+
     //white monster attacks 
     this.load.spritesheet('whitemonster_melee2', 'assets/heros/2 Owlet_Monster/Owlet_Monster_Attack2_6.png', {frameWidth: 192/6, frameHeight: 32})
     this.load.spritesheet('fireball_attack1', 'assets/heros/2 Owlet_Monster/Owlet_Monster_Attack1_4.png', {frameWidth: 128/4, frameHeight: 32})
