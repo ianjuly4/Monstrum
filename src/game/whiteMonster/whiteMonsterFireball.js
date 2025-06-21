@@ -1,16 +1,16 @@
 import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
 
-export function whiteMonsterFireball(scene, triggered = false) {
-  const { monsters, debugMode } = scene.gameState;
+export function whiteMonsterFireball(scene, selected = false) {
+  const { monsters  } = scene.gameState;
   const whiteMonster = monsters?.whiteMonster;
 
   if (!whiteMonster) return;
 
-  if (triggered) {
+  if (selected) {
 
     setMonsterAnimation(scene, whiteMonster, 'fireball_attack1', 'fireball_attack');
 
-    whiteMonster.once(Phaser.Animations.Events.ANIMATION_COMPLETE, function (){
+    whiteMonster.once(Phaser.Animations.Events.ANIMATION_COMPLETE, ()=>{
    
     const fireBall = scene.add.sprite(
       whiteMonster.x + 40,

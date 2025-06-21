@@ -11,6 +11,7 @@ export function startIdleTimer(scene) {
     scene.gameState.isIdle = true;
     setMonsterAnimation(scene, scene.gameState.monsters.pinkMonster, 'pinkmonster_idle', 'idle');
     setMonsterAnimation(scene, scene.gameState.monsters.whiteMonster, 'whitemonster_idle', 'whitemonster_idle')
+    setMonsterAnimation(scene, scene.gameState.monsters.blueMonster, 'bluemonster_idle', 'bluemonster_idle')
     //console.log('Idle started');
   });
 }

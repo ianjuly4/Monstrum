@@ -10,6 +10,8 @@ import { whiteMonsterAnimations } from "../whiteMonster/whiteMonsterAnimations";
 import { magicAnimations } from "../utilities/magicAnimations";
 import { clearCharacterBox } from "../utilities/clearCharacterBox";
 import { effectsAnimations } from "../utilities/effectsAnimations";
+import { blueMonsterAnimations } from "../blueMonster/blueMonsterAnimations";
+import { crossBowAnimations } from "../utilities/crossBowAnimations";
 
 
 
@@ -31,10 +33,12 @@ export class SelectCharacter extends Scene {
         const { width, height } = this.scale;
         pinkMonsterAnimations(this)
         whiteMonsterAnimations(this)
+        blueMonsterAnimations(this)
         startIdleTimer(this)
         magicAnimations(this)
         clearCharacterBox(this)
         effectsAnimations(this)
+        crossBowAnimations(this)
 
        
 
@@ -62,7 +66,7 @@ export class SelectCharacter extends Scene {
         this.gameState.monsters = {
             pinkMonster: this.add.sprite(190, 515, 'pinkmonster').setScale(3).setOrigin(0.5, 1).setInteractive(),
             whiteMonster: this.add.sprite(590, 515, 'whitemonster').setScale(3).setOrigin(0.5, 1).setInteractive(),
-            blueMonster: this.add.sprite(990, 515, 'bluemonster').setScale(3).setOrigin(0.5, 1).setInteractive()
+            blueMonster: this.add.sprite(990, 515, 'bluemonster').setScale(3).setOrigin(0.5, 1).setFlipX(true).setInteractive()
         };
  
         // Platform 
@@ -86,7 +90,7 @@ export class SelectCharacter extends Scene {
         });
 
         this.gameState.monsters.blueMonster.on('pointerdown', () => {
-            createCharacterBox(this, 400, 100, 400, 250, 'Blue Monster:\nAgile and fast fighter.\nHigh-speed combos.', 'bluemonster');
+            createCharacterBox(this, 400, 100, 400, 300, "The Shadowbolt Assassin: A cunning and agile hunter who vanishes into thin air and reappears with deadly intent. Armed with an enchanted crossbow and the power to teleport short distances, he specializes in precision strikes from unexpected angles.", 'bluemonster');
         });
 
         

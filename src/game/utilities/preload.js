@@ -11,15 +11,11 @@ export function preload() {
     this.load.image('whitemonster', 'assets/heros/2 Owlet_Monster/Owlet_Monster.png');
     this.load.image('bluemonster', 'assets/heros/3 Dude_Monster/Dude_Monster.png');
 
-    //pink monster attacks
-    this.load.spritesheet('pinkmonster_swordAttack2', 'assets/swordAttacks/Attack2.png', {frameWidth:42, frameHeight:42})
-    this.load.spritesheet('pinkmonster_swordAttack1', 'assets/swordAttacks/Attack1.png', {frameWidth:42, frameHeight: 42})
-    this.load.spritesheet('pinkmonster_meleAttack2', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack2_6.png', {frameWidth: 32, frameHeight: 32})
-    this.load.spritesheet('pinkmonster_meleAttack1', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack1_4.png',{frameWidth: 32, frameHeight: 32})
-    
+
     //idles
     this.load.spritesheet('pinkmonster_idle', 'assets/heros/1 Pink_Monster/Pink_Monster_Idle_4.png',{frameWidth:128/4, frameHeight:32})
-    this.load.spritesheet('whitemonster_idle', 'assets/heros/2 Owlet_Monster/Idle2.png', {frameWidth: 128/4, frameHeight: 32} )
+    this.load.spritesheet('whitemonster_idle', 'assets/heros/2 Owlet_Monster/Idle2.png', {frameWidth: 128/4, frameHeight: 32})
+    this.load.spritesheet('bluemonster_idle', 'assets/heros/3 Dude_Monster/Happy.png', {frameWidth: 192/6, frameHeight: 32})
     //magic attacks
     this.load.spritesheet('lazer_beam1', 'assets/magicAttacks/1 Magic/3.png',{frameWidth: 576/8, frameHeight: 72})
     this.load.spritesheet('lazer_ball1', 'assets/magicAttacks/1 Magic/4_2.png', {frameWidth: 288/4, frameHeight: 72 })
@@ -57,8 +53,21 @@ export function preload() {
     this.load.image('greenDart3', 'assets/effects/Slash 2/3.png')
     this.load.image('greenDart4', 'assets/effects/Slash 2/4.png')
 
+    //pink monster attacks
+    this.load.spritesheet('pinkmonster_swordAttack2', 'assets/swordAttacks/Attack2.png', {frameWidth:42, frameHeight:42})
+    this.load.spritesheet('pinkmonster_swordAttack1', 'assets/swordAttacks/Attack1.png', {frameWidth:42, frameHeight: 42})
+    this.load.spritesheet('pinkmonster_meleAttack2', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack2_6.png', {frameWidth: 32, frameHeight: 32})
+    this.load.spritesheet('pinkmonster_meleAttack1', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack1_4.png',{frameWidth: 32, frameHeight: 32})
+    
+
     //white monster attacks 
     this.load.spritesheet('whitemonster_melee2', 'assets/heros/2 Owlet_Monster/Owlet_Monster_Attack2_6.png', {frameWidth: 192/6, frameHeight: 32})
     this.load.spritesheet('fireball_attack1', 'assets/heros/2 Owlet_Monster/Owlet_Monster_Attack1_4.png', {frameWidth: 128/4, frameHeight: 32})
     this.load.spritesheet('fallingstars_attack', 'assets/heros/2 Owlet_Monster/Owlet_Monster_Throw_4.png', {frameWidth: 128/4, frameHeight: 32})
+
+    //blue monster attacks
+    this.load.spritesheet('shadowBolt_attack', 'assets/archerAttacks/3/3.png', {frameWidth: 252/6, frameHeight: 42})
+    this.load.spritesheet('phantomVolley_attack', 'assets/archerAttacks/3/1.png', {frameWidth: 252/6, frameHeight: 42})
+    this.load.spritesheet('bluemonster_attack', 'assets/archerAttacks/3/Attack.png', {frameWidth: 252/6, frameHeight: 42})
 }
+

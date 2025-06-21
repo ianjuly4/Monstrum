@@ -9,6 +9,7 @@ import { whiteMonsterLazerBeam } from "../whiteMonster/whiteMonsterLazerBeam";
 import { pinkMonsterIronFist } from "../pinkMonster/pinkMonsterIronFist";
 import { pinkMonsterCrescentSlash } from "../pinkMonster/pinkMonsterCrescentSlash";
 import { pinkMonsterPiercingStab } from "../pinkMonster/pinkMonsterPiercingStab";
+import { blueMonsterShadowBolt } from "../blueMonster/blueMonsterShadowBolt";
 
 export function createCharacterBox(scene, x, y, width, height, text, characterKey) {
         // Remove old UI
@@ -114,9 +115,9 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             const monster = scene.gameState.monsters.pinkMonster;
             
             pinkMonsterCrescentSlash(scene, true)
-            scene.textText.setText('A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 | Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Launches a fiery projectile that ignites enemies on impact. ')
+            scene.textText.setText('A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 | Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Ignites Enemies On Impact Causing Residual Burn Damage. ')
         })
-        crescentSlashBtn.description = 'A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 | Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Launches a fiery projectile that ignites enemies on impact.';
+        crescentSlashBtn.description = 'A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 | Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Ignites Enemies On Impact Causing Residual Burn Damage.';
 
         crescentSlashBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(crescentSlashBtn);
@@ -218,9 +219,9 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
        
         fireBallBtn.on('pointerdown', () => {
             whiteMonsterFireball(scene, true);
-            scene.textText.setText("Unleash a blazing orb of flame that scorches a single enemy.\n• Damage: 30 Special Cost: 0\n• Type: Projectile\n• Effects: Slowly Replenishes Special.")
+            scene.textText.setText("Unleash a blazing orb of flame that scorches a single enemy.\n• Damage: 30 Special Cost: 0\n• Type: Projectile\n• Effects: Slowly Replenishes Special")
         });
-        fireBallBtn.description = 'Unleash a blazing orb of flame that scorches a single enemy.\n• Damage: 30 Special Cost: 0\n• Type: Projectile\n• Effects: Slowly Replenishes Special .';
+        fireBallBtn.description = 'Unleash a blazing orb of flame that scorches a single enemy.\n• Damage: 30 Special Cost: 0\n• Type: Projectile\n• Effects: Slowly Replenishes Special';
 
 
         fireBallBtn.on('pointerover', () => {
@@ -234,8 +235,9 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
 
         petrificationBtn.on('pointerdown', ()=>{
             whiteMonsterPetrification(scene, true)
-            scene.textText.setText("A cursed gaze that hardens foes into stone, rendering them immobile.\n• Damage: 15 Special Cost: 30\n• Type: Stun attack\n• Effects:  ")
+            scene.textText.setText("A cursed gaze that hardens foes into stone, rendering them immobile.\n• Damage: 15 | Special Cost: 30\n• Type: Stun attack\n• Effects: Stuns Enemies For 10 Seconds")
         });
+        petrificationBtn.description = "A cursed gaze that hardens foes into stone, rendering them immobile.\n• Damage: 15 | Special Cost: 30\n• Type: Stun attack\n• Effects: Stuns Enemies For 10 Seconds "
 
         petrificationBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(petrificationBtn);
@@ -248,8 +250,10 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
 
         lazerBeamBtn.on('pointerdown', ()=>{
             whiteMonsterLazerBeam(scene, true)
+            scene.textText.setText("A concentrated beam of pure energy sears through anything in its path.\n• Damage: 40 | Special Cost: 20\n• Type: Energy Blast\n• Effects: Pierces All Enemies In A Straight Line, Ignoring Shields ")
         });
-
+        lazerBeamBtn.description = "A concentrated beam of pure energy sears through anything in its path.\n• Damage: 40 | Special Cost: 20\n• Type: Energy Blast\n• Effects: Pierces All Enemies In A Straight Line, Ignoring Shields "
+        
         lazerBeamBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(lazerBeamBtn);
             scene.updateButtonHighlight();
@@ -260,11 +264,13 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         });
 
         fallingStarsBtn.on('pointerdown', () => {  
-            whiteMonsterFallingStars(scene, true)    
+            whiteMonsterFallingStars(scene, true)
+            scene.textText.setText("Summon a cosmic barrage that rains destruction from the heavens.\n• Damage: 80 | Special Cost: 50\n• Type: Special\n• Effects: Blankets The Ground With Explosive Star Impacts")    
         });
+        fallingStarsBtn.description = "Summon a cosmic barrage that rains destruction from the heavens.\n• Damage: 80 | Special Cost: 50\n• Type: Special\n• Effects: Blankets The Ground With Explosive Star Impacts"
 
         fallingStarsBtn.on('pointerover', () => {
-            scene.selectedOptionIndex = scene.optionButtons.indexOf(petrificationBtn);
+            scene.selectedOptionIndex = scene.optionButtons.indexOf(fallingStarsBtn);
             scene.updateButtonHighlight();
         });
 
@@ -280,5 +286,91 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         scene.selectedOptionIndex = 4;
         scene.updateButtonHighlight();
         }
+
+    if(characterKey == 'bluemonster'){
+         const shadowBoltBtn = scene.add.text(x + width / 2, y + 130, 'Shadowbolt',{
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 },
+        }).setOrigin(0.5).setInteractive();
+    
+        const arcBoltBtn = scene.add.text(x + width / 2, y + 160, 'Arcbolt', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        const phantomVolleyBtn = scene.add.text(x + width / 2, y + 190, 'Phantom Volley', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        const shadowShiftBtn = scene.add.text(x + width / 2, y + 220, 'Shadow Shift', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        const chooseBtn = scene.add.text(x + width / 2, y + 250, ' Select This Monster?', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        const exitBtn = scene.add.text(x + width / 2, y + 280, ' Exit?', {
+            fontSize: '18px',
+            backgroundColor: '#222222',
+            padding: { x: 8, y: 4 }
+        }).setOrigin(0.5).setInteractive();
+
+        shadowBoltBtn.on('pointerdown', () => {  
+            blueMonsterShadowBolt(scene, true)
+            scene.textText.setText("A standard crossbow bolt fired with lethal precision.\n• Damage: 20 | Special Cost: 0\n• Type: Weapon Attack\n• Effects: Slowly Replenishes Special With Each Hit")    
+        });
+        shadowBoltBtn.description = "A standard crossbow bolt fired with lethal precision.\n• Damage: 20 | Special Cost: 0\n• Type: Weapon Attack\n• Effects: Slowly Replenishes Special With Each Hit"
+
+        shadowBoltBtn.on('pointerover', () => {
+            scene.selectedOptionIndex = scene.optionButtons.indexOf(shadowBoltBtn);
+            scene.updateButtonHighlight();
+        });
+
+        arcBoltBtn.on('pointerdown', () => {  
+            //whiteMonsterFallingStars(scene, true)
+            scene.textText.setText("An electrified bolt that crackles with energy, shocking enemies on impact.\n• Damage: 35 | Special Cost: 15\n• Type: Weapon Attack\n• Effects: Breaks Enemies Shields")    
+        });
+        arcBoltBtn.description = "An electrified bolt that crackles with energy, shocking enemies on impact.\n• Damage: 35 | Special Cost: 15\n• Type: Weapon Attack\n• Effects: Breaks Enemies Shields"
+
+        arcBoltBtn.on('pointerover', () => {
+            scene.selectedOptionIndex = scene.optionButtons.indexOf(arcBoltBtn);
+            scene.updateButtonHighlight();
+        });
+
+        phantomVolleyBtn.on('pointerdown', () => {  
+            //whiteMonsterFallingStars(scene, true)
+            scene.textText.setText("A single bolt that splits mid-air into multiple electrified arrows, striking several targets at once.\n• Damage: 75 | Special Cost: 35\n• Type: Weapon Attack\n• Effects: Barrages The Battlefield With Electrified Arrows")    
+        });
+        phantomVolleyBtn.description = "A single bolt that splits mid-air into multiple electrified arrows, striking several targets at once.\n• Damage: 75 | Special Cost: 35\n• Type: Weapon Attack\n• Effects: Barrages The Battlefield With Electrified Arrows"
+
+        phantomVolleyBtn.on('pointerover', () => {
+            scene.selectedOptionIndex = scene.optionButtons.indexOf(phantomVolleyBtn);
+            scene.updateButtonHighlight();
+        });
+
+        shadowShiftBtn.on('pointerdown', () => {  
+            //whiteMonsterFallingStars(scene, true)
+            scene.textText.setText("Instantly vanish into the shadows and reappear at a nearby location.\n• Damage: 60 | Special Cost: 50\n• Type: Special\n• Effects: Instantly vanish into the shadows and reappear at a nearby location")    
+        });
+        shadowShiftBtn.description = "Instantly vanish into the shadows and reappear at a nearby location.\n• Damage: 60 | Special Cost: 50\n• Type: Special\n• Effects: Instantly vanish into the shadows and reappear at a nearby location"
+
+        shadowShiftBtn.on('pointerover', () => {
+            scene.selectedOptionIndex = scene.optionButtons.indexOf(shadowShiftBtn);
+            scene.updateButtonHighlight();
+        });
+
+        scene.optionButtons = [shadowBoltBtn,arcBoltBtn,phantomVolleyBtn,shadowShiftBtn, chooseBtn, exitBtn];
+        scene.selectedOptionIndex = 4;
+        scene.updateButtonHighlight();
+    }
       
 }
