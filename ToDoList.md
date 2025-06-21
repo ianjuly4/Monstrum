@@ -3,8 +3,8 @@
     attack description
         stats for each attack
 2. finish pink monster select menu
-    move pinkmonster attacks into their own files
-        add 'swoosh' effects to sword attacks
+
+    redo crescent slash effect verbiage = something other than creates a projectile. Im thinking 'sets enemies on fire' or "with each critical hit, health recharges'
 3. start and finish blue archer monster
 4. if using mouse have the highlight follow mouse similar to using keypad
 5. decide if we want to have main menu have different backgrounds on each load up or some sort of event happen when new game is selected

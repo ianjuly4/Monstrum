@@ -36,7 +36,26 @@ export function preload() {
     this.load.image('lightningImpact3', 'assets/effects/Explosion_7/1/Explosion_5.png')
 
     //slash effects
-    this.load.image('')
+    this.load.image('blueSlash1', 'assets/effects/Slash 10/1.png')
+    this.load.image('blueSlash2', 'assets/effects/Slash 10/2.png')
+    this.load.image('blueSlash3', 'assets/effects/Slash 10/3.png')
+    this.load.image('blueSlash4', 'assets/effects/Slash 10/4.png')
+    this.load.image('blueSlash5', 'assets/effects/Slash 10/5.png')
+    this.load.image('blueSlash6', 'assets/effects/Slash 10/6.png')
+    this.load.image('blueSlash7', 'assets/effects/Slash 10/7.png')
+    this.load.image('blueSlash8', 'assets/effects/Slash 10/8.png')
+    this.load.image('redSlash1', 'assets/effects/Slash 5/1.png')
+    this.load.image('redSlash2', 'assets/effects/Slash 5/2.png')
+    this.load.image('redSlash3', 'assets/effects/Slash 5/3.png')
+    this.load.image('redSlash4', 'assets/effects/Slash 5/4.png')
+    this.load.image('redSlash5', 'assets/effects/Slash 5/5.png')
+    this.load.image('redSlash6', 'assets/effects/Slash 5/6.png')
+    this.load.image('redSlash7', 'assets/effects/Slash 5/7.png')
+    this.load.image('redSlash8', 'assets/effects/Slash 5/8.png')
+    this.load.image('greenDart1', 'assets/effects/Slash 2/1.png')
+    this.load.image('greenDart2', 'assets/effects/Slash 2/2.png')
+    this.load.image('greenDart3', 'assets/effects/Slash 2/3.png')
+    this.load.image('greenDart4', 'assets/effects/Slash 2/4.png')
 
     //white monster attacks 
     this.load.spritesheet('whitemonster_melee2', 'assets/heros/2 Owlet_Monster/Owlet_Monster_Attack2_6.png', {frameWidth: 192/6, frameHeight: 32})

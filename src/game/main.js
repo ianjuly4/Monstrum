@@ -22,7 +22,7 @@ const config = {
         arcade: {
             gravity: { y: 200 },
             enableBody: true,
-            debug: true
+            //debug: true
         }
     },
     scene: [

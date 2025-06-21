@@ -9,6 +9,7 @@ import { preload } from "../utilities/preload";
 import { whiteMonsterAnimations } from "../whiteMonster/whiteMonsterAnimations";
 import { magicAnimations } from "../utilities/magicAnimations";
 import { clearCharacterBox } from "../utilities/clearCharacterBox";
+import { effectsAnimations } from "../utilities/effectsAnimations";
 
 
 
@@ -33,6 +34,8 @@ export class SelectCharacter extends Scene {
         startIdleTimer(this)
         magicAnimations(this)
         clearCharacterBox(this)
+        effectsAnimations(this)
+
        
 
         // Background layers

@@ -7,6 +7,8 @@ import { whiteMonsterFireball } from "../whiteMonster/whiteMonsterFireball";
 import { whiteMonsterPetrification } from "../whiteMonster/whiteMonsterPetrification";
 import { whiteMonsterLazerBeam } from "../whiteMonster/whiteMonsterLazerBeam";
 import { pinkMonsterIronFist } from "../pinkMonster/pinkMonsterIronFist";
+import { pinkMonsterCrescentSlash } from "../pinkMonster/pinkMonsterCrescentSlash";
+import { pinkMonsterPiercingStab } from "../pinkMonster/pinkMonsterPiercingStab";
 
 export function createCharacterBox(scene, x, y, width, height, text, characterKey) {
         // Remove old UI
@@ -76,9 +78,9 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         ironFistBtn.on('pointerdown', () => {
             const monster = scene.gameState.monsters.pinkMonster;
             pinkMonsterIronFist(scene, true)
-            scene.textText.setText('A brutal close-range punch that sends shockwaves through armor. \n• Damage: 25 Special Cost: 0\n• Type: Melee \n• Effects: Replenishes Special ');
+            scene.textText.setText('A brutal close-range punch that sends shockwaves through armor. \n• Damage: 25 | Special Cost: 0\n• Type: Melee \n• Effects: Replenishes Special ');
         });
-        ironFistBtn.description = 'A brutal close-range punch that sends shockwaves through armor. \n• Damage: 25 Special Cost: 0\n• Type: Melee \n• Effects: Replenishes Special ';
+        ironFistBtn.description = 'A brutal close-range punch that sends shockwaves through armor. \n• Damage: 25 | Special Cost: 0\n• Type: Melee \n• Effects: Replenishes Special ';
 
         ironFistBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(ironFistBtn);
@@ -92,16 +94,11 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         piercingStabBtn.on('pointerdown', () => {
             const monster = scene.gameState.monsters.pinkMonster;
         
-            if (monster.scaleX > 3|| monster.scaleY > 3) {  
-                monster.setScale(3);
-                monster.setPosition(190, 515);
-            }
-        
-            setMonsterAnimation(scene, monster, 'pinkmonster_swordAttack1', 'swordAttack1');
-            scene.textText.setText('A swift stab dealing focused damage.')
+            pinkMonsterPiercingStab(scene, true);
+            scene.textText.setText('A lightning-fast thrust aimed at weak points.\n• Damage: 35 | Special Cost: 15 \n• Type: Weapon Attack \n• Effects: Shield breaker')
         });
 
-        piercingStabBtn.description = 'A lightning-fast thrust aimed at weak points.\n• Damage: 35 Special Cost: 15 \n• Type: Weapon Attack \n• Effects: Shield breaker';
+        piercingStabBtn.description = 'A lightning-fast thrust aimed at weak points.\n• Damage: 35 | Special Cost: 15 \n• Type: Weapon Attack \n• Effects: Shield breaker';
 
 
         piercingStabBtn.on('pointerover', () => {
@@ -115,16 +112,11 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
 
         crescentSlashBtn.on('pointerdown', ()=>{
             const monster = scene.gameState.monsters.pinkMonster;
-            if(monster.scaleX > 3 || monster.scaleY > 3){
-                //monster.setOrigin(0.5, 1)
-                //monster.setOffset(0, 0);
-                monster.setScale(3);
-                monster.setPosition(190, 515)
-            }
-            setMonsterAnimation(scene, monster, 'pinkmonster_swordAttack2', 'swordAttack2')
             
+            pinkMonsterCrescentSlash(scene, true)
+            scene.textText.setText('A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 | Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Launches a fiery projectile that ignites enemies on impact. ')
         })
-        crescentSlashBtn.description = 'A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Produces a slash projectile';
+        crescentSlashBtn.description = 'A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 | Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Launches a fiery projectile that ignites enemies on impact.';
 
         crescentSlashBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(crescentSlashBtn);
@@ -139,10 +131,10 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             const monster = scene.gameState.monsters.pinkMonster;
             
             pinkMonsterSpecial(scene, true)
-          
+            scene.textText.setText('Unleash your Titan form in a seismic smash, shattering the battlefield. \n• Damage: 80 | Special Cost: 50\n• Type: Special\n• Effects: Deals area damage when transforming, immune to most attacks for 5 seconds.')
             
         });
-        titanRampageBtn.description = 'Unleash your Titan form in a seismic smash, shattering the battlefield. \n• Damage: 80 Special Cost: 50\n• Type: Special\n• Effects: Deals area damage when transforming, immune to most attacks for 5 seconds.';
+        titanRampageBtn.description = 'Unleash your Titan form in a seismic smash, shattering the battlefield. \n• Damage: 80 | Special Cost: 50\n• Type: Special\n• Effects: Deals area damage when transforming, immune to most attacks for 5 seconds.';
 
         titanRampageBtn.on('pointerover', () => {
             scene.selectedOptionIndex = scene.optionButtons.indexOf(titanRampageBtn);
@@ -184,91 +176,95 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
     if(characterKey == 'whiteMonster'){
 
         // Buttons
-        const attack1Btn = scene.add.text(x + width / 2, y + 100, 'Fireball',{
+        const fireBallBtn = scene.add.text(x + width / 2, y + 130, 'Fireball',{
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 },
         }).setOrigin(0.5).setInteractive();
        
     
-        const attack2Btn = scene.add.text(x + width / 2, y + 130, 'Petrification ', {
+        const petrificationBtn = scene.add.text(x + width / 2, y + 160, 'Petrification ', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
        
 
-        const attack3Btn = scene.add.text(x + width / 2, y + 160, 'Lazerbeam ', {
+        const lazerBeamBtn = scene.add.text(x + width / 2, y + 190, 'Lazerbeam ', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
        
 
-        const specialBtn = scene.add.text(x + width / 2, y + 190, 'Falling Stars', {
+        const fallingStarsBtn = scene.add.text(x + width / 2, y + 220, 'Falling Stars', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
        
 
-        const chooseBtn = scene.add.text(x + width / 2, y + 220, ' Select This Monster?', {
+        const chooseBtn = scene.add.text(x + width / 2, y + 250, ' Select This Monster?', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
         
-        const exitBtn = scene.add.text(x + width / 2, y + 250, ' Exit?', {
+        const exitBtn = scene.add.text(x + width / 2, y + 280, ' Exit?', {
             fontSize: '18px',
             backgroundColor: '#222222',
             padding: { x: 8, y: 4 }
         }).setOrigin(0.5).setInteractive();
        
-        attack1Btn.on('pointerdown', () => {
+        fireBallBtn.on('pointerdown', () => {
             whiteMonsterFireball(scene, true);
+            scene.textText.setText("Unleash a blazing orb of flame that scorches a single enemy.\n• Damage: 30 Special Cost: 0\n• Type: Projectile\n• Effects: Slowly Replenishes Special.")
         });
+        fireBallBtn.description = 'Unleash a blazing orb of flame that scorches a single enemy.\n• Damage: 30 Special Cost: 0\n• Type: Projectile\n• Effects: Slowly Replenishes Special .';
 
-        attack1Btn.on('pointerover', () => {
-            scene.selectedOptionIndex = scene.optionButtons.indexOf(attack1Btn);
+
+        fireBallBtn.on('pointerover', () => {
+            scene.selectedOptionIndex = scene.optionButtons.indexOf(fireBallBtn);
             scene.updateButtonHighlight();
         });
 
-        attack1Btn.on('pointerout', ()=>{
+        fireBallBtn.on('pointerout', ()=>{
             scene.textText.setText(scene.originalCharacterDescription);
         });
 
-        attack2Btn.on('pointerdown', ()=>{
+        petrificationBtn.on('pointerdown', ()=>{
             whiteMonsterPetrification(scene, true)
+            scene.textText.setText("A cursed gaze that hardens foes into stone, rendering them immobile.\n• Damage: 15 Special Cost: 30\n• Type: Stun attack\n• Effects:  ")
         });
 
-        attack2Btn.on('pointerover', () => {
-            scene.selectedOptionIndex = scene.optionButtons.indexOf(attack2Btn);
+        petrificationBtn.on('pointerover', () => {
+            scene.selectedOptionIndex = scene.optionButtons.indexOf(petrificationBtn);
             scene.updateButtonHighlight();
         });
 
-        attack2Btn.on('pointerout', ()=>{
+        petrificationBtn.on('pointerout', ()=>{
             scene.textText.setText(scene.originalCharacterDescription);
         });
 
-        attack3Btn.on('pointerdown', ()=>{
+        lazerBeamBtn.on('pointerdown', ()=>{
             whiteMonsterLazerBeam(scene, true)
         });
 
-        attack3Btn.on('pointerover', () => {
-            scene.selectedOptionIndex = scene.optionButtons.indexOf(attack3Btn);
+        lazerBeamBtn.on('pointerover', () => {
+            scene.selectedOptionIndex = scene.optionButtons.indexOf(lazerBeamBtn);
             scene.updateButtonHighlight();
         });
 
-        attack3Btn.on('pointerout', ()=>{
+        lazerBeamBtn.on('pointerout', ()=>{
             scene.textText.setText(scene.originalCharacterDescription);
         });
 
-        specialBtn.on('pointerdown', () => {  
+        fallingStarsBtn.on('pointerdown', () => {  
             whiteMonsterFallingStars(scene, true)    
         });
 
-        specialBtn.on('pointerover', () => {
-            scene.selectedOptionIndex = scene.optionButtons.indexOf(specialBtn);
+        fallingStarsBtn.on('pointerover', () => {
+            scene.selectedOptionIndex = scene.optionButtons.indexOf(petrificationBtn);
             scene.updateButtonHighlight();
         });
 
@@ -280,7 +276,7 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             clearCharacterBox(scene)
         })
 
-        scene.optionButtons = [attack1Btn,attack2Btn,attack3Btn, specialBtn, chooseBtn, exitBtn];
+        scene.optionButtons = [fireBallBtn,petrificationBtn,lazerBeamBtn,fallingStarsBtn, chooseBtn, exitBtn];
         scene.selectedOptionIndex = 4;
         scene.updateButtonHighlight();
         }

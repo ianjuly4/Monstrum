@@ -13,8 +13,18 @@ export function pinkMonsterPiercingStab(scene, selected = false){
                 pinkMonster.setPosition(190, 515);
             }
 
-        setMonsterAnimation(scene, pinkMonster, 'pinkmonster_meleAttack2', 'meleAttack2');
-    
+        setMonsterAnimation(scene, pinkMonster, 'pinkmonster_swordAttack1', 'swordAttack1');
+        
+        //const greenDart = scene.add.sprite(
+          //  pinkMonster.x + 20,
+            //pinkMonster.y - 40,
+            //'greenDart1'
+        //).setScale(0.5).setAlpha(0.75).setDepth(-1)
+
+        //greenDart.anims.play('greenDart')
+        //greenDart.once(Phaser.Animations.Events.ANIMATION_COMPLETE, ()=>{
+          //  greenDart.destroy()
+        //})
         
     }
 }
