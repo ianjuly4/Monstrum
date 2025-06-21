@@ -7,7 +7,7 @@ export function pinkMonsterAnimations(scene){
         key: 'meleAttack2',
         frames: scene.anims.generateFrameNumbers('pinkmonster_meleAttack2',{
             start: 0, end: 5}),
-            frameRate: 8,
+            frameRate: 6,
             repeat: 0
     })
     scene.anims.create({

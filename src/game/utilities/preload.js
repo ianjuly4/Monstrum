@@ -69,5 +69,10 @@ export function preload() {
     this.load.spritesheet('shadowBolt_attack', 'assets/archerAttacks/3/3.png', {frameWidth: 252/6, frameHeight: 42})
     this.load.spritesheet('phantomVolley_attack', 'assets/archerAttacks/3/1.png', {frameWidth: 252/6, frameHeight: 42})
     this.load.spritesheet('bluemonster_attack', 'assets/archerAttacks/3/Attack.png', {frameWidth: 252/6, frameHeight: 42})
+
+    //sound effects
+    this.load.audio('shadowBolt_sound', 'assets/soundEffects/launches/slimeball.wav')
+    this.load.audio('punch1', 'assets/soundEffects/melee/1.ogg')
+    this.load.audio('punch6', 'assets/soundEffects/melee/6.ogg')
 }
 

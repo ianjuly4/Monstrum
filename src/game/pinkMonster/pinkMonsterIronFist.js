@@ -14,7 +14,16 @@ export function pinkMonsterIronFist(scene, selected = false){
             }
 
         setMonsterAnimation(scene, pinkMonster, 'pinkmonster_meleAttack2', 'meleAttack2');
-    
+        const punch1 = scene.sound.add('punch1', { volume: 0.2 });
+        const punch6 = scene.sound.add('punch6', { volume: 0.2 });
+
         
+        punch1.once('complete', () => {
+            punch6.play();
+        });
+        punch1.play();
+        pinkMonster.once(Phaser.Animations.Events.ANIMATION_COMPLETE, ()=>{
+            pinkMonster.setTexture('pinkmonster')
+        })
     }
 }

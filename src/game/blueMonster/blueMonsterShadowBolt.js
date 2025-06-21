@@ -16,7 +16,7 @@ export function blueMonsterShadowBolt(scene, selected = false){
         ).setScale(3).setFlipX(true)
 
         shadowBolt.anims.play('shadowBolt')
-        console.log(shadowBolt.x, shadowBolt.y)
+       
         blueMonster.once(Phaser.Animations.Events.ANIMATION_COMPLETE, ()=>{
 
             const bolt = scene.add.sprite(
@@ -30,6 +30,9 @@ export function blueMonsterShadowBolt(scene, selected = false){
             .setOrigin(0.5, 0.5);
 
             bolt.anims.play('greenDart');
+            scene.sound.play('shadowBolt_sound',{
+                volume: 0.2
+            });
             scene.tweens.add({
                 targets: bolt,
                 x: blueMonster.x - 1000, 
