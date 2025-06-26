@@ -13,6 +13,7 @@ export class MainMenu extends Scene
         this.load.image('mountain', 'assets/backgrounds/nature_3/2.png');
         this.load.image('checkered', 'assets/backgrounds/nature_3/3.png');
         this.load.image('trees_and_grass_foreground', 'assets/backgrounds/nature_3/4.png')
+      
     }
 
     create ()
@@ -71,6 +72,8 @@ export class MainMenu extends Scene
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
         }).setOrigin(0.5);
+        
+        
     }
     update(){
         this.bgClouds.tilePositionX += 0.2

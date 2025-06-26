@@ -15,21 +15,20 @@ export function pinkMonsterCrescentSlash(scene, selected = false) {
     setMonsterAnimation(scene, pinkMonster, 'pinkmonster_swordAttack2', 'swordAttack2');
 
     // Slash effect animation
-    const redSlash = scene.add.sprite(
-      pinkMonster.x + 50,
-      pinkMonster.y - 65,
-      'redSlash1'
-    ).setScale(0.5).setOrigin(0.5).setAlpha(0.70).setDepth(1);
+    //const redSlash = scene.add.sprite(
+      //pinkMonster.x + 50,
+      //pinkMonster.y - 65,
+      //'redSlash1'
+    //).setScale(0.5).setOrigin(0.5).setAlpha(0.70).setDepth(1);
     
 
-    redSlash.anims.play('redSlash');
+    //redSlash.anims.play('redSlash');
+    const sword9 = scene.sound.add('sword9', { volume: 0.2 });
+    sword9.play()
+    //redSlash.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
     
-    redSlash.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-    
-      redSlash.destroy()
-    });
-
-   
+      //redSlash.destroy()
+    //});
    
   }
 }

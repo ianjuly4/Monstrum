@@ -14,7 +14,8 @@ export function pinkMonsterPiercingStab(scene, selected = false){
             }
 
         setMonsterAnimation(scene, pinkMonster, 'pinkmonster_swordAttack1', 'swordAttack1');
-        
+        const sword10 = scene.sound.add('sword10', {volume: 0.2})
+        sword10.play()
         //const greenDart = scene.add.sprite(
           //  pinkMonster.x + 20,
             //pinkMonster.y - 40,

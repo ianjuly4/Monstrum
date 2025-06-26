@@ -60,7 +60,8 @@ export class SelectCharacter extends Scene {
             stroke: '#000000', strokeThickness: 8
         }).setOrigin(0.5).setInteractive();
 
-        mainMenu.once('pointerdown', () => this.scene.start('MainMenu'));
+        mainMenu.once('pointerdown', () => {this.scene.start('MainMenu'), wind1.stop(),
+        birdchirping.stop()});
 
         // Monsters
         this.gameState.monsters = {
@@ -97,8 +98,6 @@ export class SelectCharacter extends Scene {
 
         // Keyboard input
     
-     
-       
 
         this.input.keyboard.on('keydown-DOWN', () => {
             if (this.optionButtons.length === 0) return;
@@ -125,6 +124,11 @@ export class SelectCharacter extends Scene {
                 clearCharacterBox(this)
             }
         });
+
+        const wind1 = this.sound.add('wind1', {volume: 0.5, loop: true})
+        const birdchirping = this.sound.add('birdchirping', {volume: 0.5, loop: true})
+        wind1.play()
+        birdchirping.play()
         
     
     }

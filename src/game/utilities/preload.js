@@ -74,5 +74,10 @@ export function preload() {
     this.load.audio('shadowBolt_sound', 'assets/soundEffects/launches/slimeball.wav')
     this.load.audio('punch1', 'assets/soundEffects/melee/1.ogg')
     this.load.audio('punch6', 'assets/soundEffects/melee/6.ogg')
+    this.load.audio('mainMenu', 'assets/soundEffects/backgroundMusic/Gray Trip.ogg')
+    this.load.audio('wind1', 'assets/soundEffects/backgroundMusic/wind1.wav')
+    this.load.audio('birdchirping', 'assets/soundEffects/backgroundMusic/birdchirping071414.mp3')
+    this.load.audio('sword9', 'assets/soundEffects/swordEffects/swish-9.wav')
+    this.load.audio('sword10', 'assets/soundEffects/swordEffects/swish-10.wav')
 }
 

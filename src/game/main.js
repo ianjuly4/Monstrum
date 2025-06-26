@@ -26,7 +26,7 @@ const config = {
         }
     },
     scene: [
-        //MainMenu,
+        MainMenu,
         SelectCharacter,
         Cinematic,
         MainGame,
