@@ -21,6 +21,9 @@ export function whiteMonsterFireball(scene, selected = false) {
       .setScale(6)
       .setOrigin(0.5, 0.5);
 
+    const fireBallSound = scene.sound.add('fireBall', {volume: 0.3})
+    fireBallSound.play()
+
         fireBall.anims.play('fireball');
         scene.tweens.add({
             targets: fireBall,

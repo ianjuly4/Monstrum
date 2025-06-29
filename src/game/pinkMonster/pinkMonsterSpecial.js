@@ -47,7 +47,9 @@ export function pinkMonsterSpecial(scene, selected = false) {
                     scene.tweens.add({
                         targets: flash,
                         alpha: 0,
-                        duration: 100
+                        duration: 100,
+                        onComplete: () => {
+                            scene.cameras.main.shake(150, 0.01)}
                     });
                 }
 
@@ -68,7 +70,8 @@ export function pinkMonsterSpecial(scene, selected = false) {
                 setTimeout(() => {
                     blackout.destroy();
                     flash.destroy();
-                    scene.gameState.isUsingSpecial = false;
+                    
+                    
                 }, 500);
             }
         };

@@ -79,5 +79,7 @@ export function preload() {
     this.load.audio('birdchirping', 'assets/soundEffects/backgroundMusic/birdchirping071414.mp3')
     this.load.audio('sword9', 'assets/soundEffects/swordEffects/swish-9.wav')
     this.load.audio('sword10', 'assets/soundEffects/swordEffects/swish-10.wav')
+    this.load.audio('fireBall', 'assets/soundEffects/launches/flaunch.wav')
+    this.load.audio('lazerBeam', 'assets/soundEffects/launches/rlaunch.wav')
 }
 

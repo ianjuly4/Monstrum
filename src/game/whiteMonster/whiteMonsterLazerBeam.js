@@ -48,6 +48,8 @@ export function whiteMonsterLazerBeam(scene, selected = false) {
 
 
       beam.anims.play('lazerbeam');
+      const lazerBeamSound = scene.sound.add('lazerBeam', {volume: 0.3})
+      lazerBeamSound.play()
 
       beam.on('animationcomplete', () => {
         beam.destroy();
