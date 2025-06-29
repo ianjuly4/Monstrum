@@ -1,4 +1,5 @@
 import { Scene } from 'phaser';
+import { preload } from '../utilities/preload';
 
 export class MainMenu extends Scene
 {
@@ -8,12 +9,7 @@ export class MainMenu extends Scene
     }
 
     preload(){
-        //backgrounds
-        this.load.image('clouds', 'assets/backgrounds/nature_3/1.png');
-        this.load.image('mountain', 'assets/backgrounds/nature_3/2.png');
-        this.load.image('checkered', 'assets/backgrounds/nature_3/3.png');
-        this.load.image('trees_and_grass_foreground', 'assets/backgrounds/nature_3/4.png')
-      
+        preload.call(this)
     }
 
     create ()
@@ -23,7 +19,11 @@ export class MainMenu extends Scene
         this.bgClouds = this.add.tileSprite(0,0,width, height,'clouds')
             .setOrigin(0,0)
             .setDepth(-2)
-           
+            
+        this.add.image(0,0, 'sky')
+            .setOrigin(0,0)
+            .setDepth(-3)
+            .setDisplaySize(width, height)   
 
         this.add.image(0,0, 'mountain')
             .setOrigin(0,0)
@@ -58,20 +58,32 @@ export class MainMenu extends Scene
         });
         
         newGameText.on('pointerdown', () => {
-            this.scene.start('SelectCharacter');
+            this.scene.start('SelectCharacter',{mode: 'story'});
         });
 
-        this.add.text(512, 340, "Load Game", {
+        const loadGame = this.add.text(512, 340, "Load Game", {
             fontFamily: 'Arial Black', fontSize: 28, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
-        }).setOrigin(0.5);
+        }).setOrigin(0.5).setInteractive()
 
-        this.add.text(512, 420, 'Battlegrounds', {
+        const battlegrounds = this.add.text(512, 420, 'Battlegrounds', {
             fontFamily: 'Arial Black', fontSize: 28, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
-        }).setOrigin(0.5);
+        }).setOrigin(0.5).setInteractive();
+
+        battlegrounds.on('pointerover', () => {
+            battlegrounds.setStyle({ fill: 'brown' }); 
+        });
+        
+        battlegrounds.on('pointerout', () => {
+            battlegrounds.setStyle({ fill: '#ffffff' }); 
+        });
+        
+        battlegrounds.on('pointerdown', () => {
+            this.scene.start('SelectCharacter',{mode: 'battlegrounds'});
+        });
         
         
     }

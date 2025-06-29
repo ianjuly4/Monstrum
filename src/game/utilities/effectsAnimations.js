@@ -1,4 +1,10 @@
 export function effectsAnimations(scene){
+    const anims = scene.anims;
+
+    if(anims.exists('blueSlash')) return
+    if(anims.exists('redSlash')) return
+   
+
     scene.anims.create({
         key: 'blueSlash',
         frames: [

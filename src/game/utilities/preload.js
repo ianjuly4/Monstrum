@@ -5,6 +5,21 @@ export function preload() {
     this.load.image('clouds', 'assets/backgrounds/nature_5/2.png');
     this.load.image('hills', 'assets/backgrounds/nature_5/3.png');
     this.load.image('grass_foreground', 'assets/backgrounds/nature_5/4.png');
+    this.load.image('clouds', 'assets/backgrounds/nature_3/1.png');
+    this.load.image('mountain', 'assets/backgrounds/nature_3/2.png');
+    this.load.image('checkered', 'assets/backgrounds/nature_3/3.png');
+    this.load.image('trees_and_grass_foreground', 'assets/backgrounds/nature_3/4.png')
+    this.load.image('nature2_1', 'assets/backgrounds/nature_2/1.png')
+    this.load.image('nature2_2', 'assets/backgrounds/nature_2/2.png')
+    this.load.image('nature2_3', 'assets/backgrounds/nature_2/3.png')
+    this.load.image('nature2_4', 'assets/backgrounds/nature_2/4.png')
+    
+    //battlegrounds backgrounds
+    this.load.image('summer1', 'assets/backgrounds/battlegrounds/summer/1.png')
+    this.load.image('summer2', 'assets/backgrounds/battlegrounds/summer/2.png')
+    this.load.image('summer3', 'assets/backgrounds/battlegrounds/summer/3.png')
+    this.load.image('summer4', 'assets/backgrounds/battlegrounds/summer/4.png')
+    this.load.image('summer5', 'assets/backgrounds/battlegrounds/summer/5.png')
 
     // Monsters
     this.load.image('pinkmonster', 'assets/heros/1 Pink_Monster/Pink_Monster.png');

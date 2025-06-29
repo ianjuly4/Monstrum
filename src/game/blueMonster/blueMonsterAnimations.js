@@ -1,5 +1,11 @@
 export function blueMonsterAnimations(scene) {
+    const anims = scene.anims;
 
+    if(anims.exists('bluemonster_idle')) return
+    if(anims.exists('shadowBolt')) return
+    if(anims.exists('phantomVolley')) return
+    if(anims.exists('blueMonsterAttack')) return
+    
     scene.anims.create({
         key: 'bluemonster_idle',
         frames: scene.anims.generateFrameNumbers('bluemonster_idle', {

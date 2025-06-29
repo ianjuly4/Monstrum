@@ -93,7 +93,7 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         });
 
         piercingStabBtn.on('pointerdown', () => {
-            const monster = scene.gameState.monsters.pinkMonster;
+           
         
             pinkMonsterPiercingStab(scene, true);
             scene.textText.setText('A lightning-fast thrust aimed at weak points.\n• Damage: 35 | Special Cost: 15 \n• Type: Weapon Attack \n• Effects: Shield breaker')
@@ -147,8 +147,13 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         });
 
         chooseBtn.on('pointerdown', () => {
+            scene.wind1.stop()
+            scene.birdchirping.stop()
+            clearCharacterBox(scene)
+            const nextScene = scene.selectedMode === 'battlegrounds' ? 'Battlegrounds' : 'Cinematic';
             scene.registry.set('selectedCharacter', characterKey);
-            scene.scene.start('Cinematic');
+            scene.scene.start(nextScene, { selectedCharacter: characterKey });
+
         });
         chooseBtn.description = text;
 
@@ -275,8 +280,11 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         });
 
         chooseBtn.on('pointerdown', () => {
-            scene.registry.set('selectedCharacter', characterKey);
-            scene.scene.start('Cinematic');
+            clearCharacterBox(scene)
+            const nextScene = scene.selectedMode === 'battlegrounds' ? 'Battlegrounds' : 'Cinematic';
+            scene.registry.set('selectedCharacter', characterKey); 
+            scene.scene.start(nextScene, { selectedCharacter: characterKey });
+
         });
         exitBtn.on('pointerdown', ()=>{
             clearCharacterBox(scene)
@@ -367,6 +375,17 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             scene.selectedOptionIndex = scene.optionButtons.indexOf(shadowShiftBtn);
             scene.updateButtonHighlight();
         });
+
+        chooseBtn.on('pointerdown', () => {
+            clearCharacterBox(scene)
+            const nextScene = scene.selectedMode === 'battlegrounds' ? 'Battlegrounds' : 'Cinematic';
+            scene.registry.set('selectedCharacter', characterKey); 
+            scene.scene.start(nextScene, { selectedCharacter: characterKey });
+
+        });
+        exitBtn.on('pointerdown', ()=>{
+            clearCharacterBox(scene)
+        })
 
         scene.optionButtons = [shadowBoltBtn,arcBoltBtn,phantomVolleyBtn,shadowShiftBtn, chooseBtn, exitBtn];
         scene.selectedOptionIndex = 4;

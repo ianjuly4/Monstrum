@@ -1,4 +1,9 @@
 export function crossBowAnimations(scene){
+    const anims = scene.anims;
+
+    if(anims.exists('greenDart')) return
+  
+
     scene.anims.create({
         key: 'greenDart',
         frames: [

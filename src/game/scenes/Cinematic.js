@@ -1,17 +1,18 @@
 import { Scene } from "phaser";
+import { preload } from "../utilities/preload";
 
 export class Cinematic extends Scene{
     constructor(){
         super('Cinematic')
     }
-    preload(){
+    init(data) {
+    this.selectedCharacter = data.selectedCharacter || this.registry.get('selectedCharacter');
+    }
 
+    preload(){
+        preload.call(this)
     }
     create(){
-        this.add.text(612, 80, 'Please Select A Character', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        }).setOrigin(0.5);
+        
     }
 }

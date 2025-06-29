@@ -19,7 +19,9 @@ export class SelectCharacter extends Scene {
     constructor() {
         super('SelectCharacter');
     }
-
+    init(data) {
+    this.selectedMode = data.mode || 'story'; 
+    }   
     preload(){
         preload.call(this)
     }
@@ -36,7 +38,6 @@ export class SelectCharacter extends Scene {
         blueMonsterAnimations(this)
         startIdleTimer(this)
         magicAnimations(this)
-        clearCharacterBox(this)
         effectsAnimations(this)
         crossBowAnimations(this)
 
@@ -60,8 +61,8 @@ export class SelectCharacter extends Scene {
             stroke: '#000000', strokeThickness: 8
         }).setOrigin(0.5).setInteractive();
 
-        mainMenu.once('pointerdown', () => {this.scene.start('MainMenu'), wind1.stop(),
-        birdchirping.stop()});
+        mainMenu.once('pointerdown', () => {this.scene.start('MainMenu'), this.wind1.stop(),
+        this.birdchirping.stop()});
 
         // Monsters
         this.gameState.monsters = {
@@ -69,7 +70,7 @@ export class SelectCharacter extends Scene {
             whiteMonster: this.add.sprite(590, 515, 'whitemonster').setScale(3).setOrigin(0.5, 1).setInteractive(),
             blueMonster: this.add.sprite(990, 515, 'bluemonster').setScale(3).setOrigin(0.5, 1).setFlipX(true).setInteractive()
         };
- 
+        clearCharacterBox(this)
         // Platform 
         const platforms = this.physics.add.staticGroup()
         const platform = platforms.create(600, 530, 'grass_foreground')
@@ -125,10 +126,10 @@ export class SelectCharacter extends Scene {
             }
         });
 
-        const wind1 = this.sound.add('wind1', {volume: 0.5, loop: true})
-        const birdchirping = this.sound.add('birdchirping', {volume: 0.5, loop: true})
-        wind1.play()
-        birdchirping.play()
+        this.wind1 = this.sound.add('wind1', {volume: 0.5, loop: true})
+        this.birdchirping = this.sound.add('birdchirping', {volume: 0.5, loop: true})
+        this.wind1.play()
+        this.birdchirping.play()
         
     
     }

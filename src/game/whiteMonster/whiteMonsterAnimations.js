@@ -1,5 +1,12 @@
 //whiteMonsterAnimations
 export function whiteMonsterAnimations(scene){
+    const anims = scene.anims;
+
+    if(anims.exists('melee2')) return
+    if(anims.exists('whitemonster_idle')) return
+    if(anims.exists('fireball_attack')) return
+    if(anims.exists('petrification_attack1')) return
+    if(anims.exists('fallingstars')) return
 
     scene.anims.create({
         key: 'melee2',

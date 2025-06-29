@@ -1,4 +1,12 @@
 export function magicAnimations(scene) {
+    const anims = scene.anims;
+
+    if(anims.exists('lazerbeam')) return
+    if(anims.exists('fireball')) return
+    if(anims.exists('petrification')) return
+    if(anims.exists('stars_falling')) return
+     if(anims.exists('starsLanding')) return
+    
 
     scene.anims.create({
         key: 'lazerbeam',
