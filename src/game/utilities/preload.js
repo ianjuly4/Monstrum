@@ -81,5 +81,7 @@ export function preload() {
     this.load.audio('sword10', 'assets/soundEffects/swordEffects/swish-10.wav')
     this.load.audio('fireBall', 'assets/soundEffects/launches/flaunch.wav')
     this.load.audio('lazerBeam', 'assets/soundEffects/launches/rlaunch.wav')
+    this.load.audio('petrificationSound','assets/soundEffects/soundEffects/EM_EARTH_LAUNCH_01.wav')
+    this.load.audio('lightningSound', 'assets/soundEffects/soundEffects/Lightning Spell Impacts/Lightning Spell Impact 1.wav')
 }
 

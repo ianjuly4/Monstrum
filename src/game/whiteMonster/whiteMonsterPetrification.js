@@ -22,6 +22,8 @@ export function whiteMonsterPetrification(scene, selected = false){
           .setOrigin(0.5, 0.5);
     
             petrification.anims.play('petrification');
+            const petrificationSound = scene.sound.add('petrificationSound', {volumne: 0.3})
+            petrificationSound.play()
             
             scene.tweens.add({
                 targets: petrification,

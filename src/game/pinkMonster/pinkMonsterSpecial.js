@@ -65,6 +65,14 @@ export function pinkMonsterSpecial(scene, selected = false) {
                     pinkMonster.setPosition(190, 515);
                     setMonsterAnimation(scene, pinkMonster, 'pinkmonster_meleAttack1', 'meleAttack1');
                     setMonsterAnimation(scene, pinkMonster, 'pinkmonster_meleAttack2', 'meleAttack2')
+                    const punch1 = scene.sound.add('punch1', { volume: 0.2 });
+                    const punch6 = scene.sound.add('punch6', { volume: 0.2 });
+
+                    
+                    punch1.once('complete', () => {
+                        punch6.play();
+                    });
+                    punch1.play();
              
                 
                 setTimeout(() => {
@@ -75,7 +83,8 @@ export function pinkMonsterSpecial(scene, selected = false) {
                 }, 500);
             }
         };
-
+        const lightningSound = scene.sound.add('lightningSound',{volumne: 0.2})
+        lightningSound.play()
         playLightning();
     }
 
