@@ -29,7 +29,7 @@ export class Battlegrounds extends Scene{
        
 
         //MainMenu button
-        const mainMenu = this.add.text(60, 20, 'Main Menu', {
+        const mainMenu = this.add.text(60, 20, ' Back To Main Menu', {
             fontFamily: 'Arial Black', fontSize: 18, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8
         }).setOrigin(0.5).setInteractive();
@@ -37,7 +37,7 @@ export class Battlegrounds extends Scene{
         mainMenu.once('pointerdown', () => {this.scene.start('MainMenu')});
 
         //SelectCharacter Button
-        const selectCharacter = this.add.text(220, 20, 'Select Character', {
+        const selectCharacter = this.add.text(220, 20, ' Back To Select Character Screen', {
             fontFamily: 'Arial Black', fontSize: 18, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8
         }).setOrigin(0.5).setInteractive();
@@ -71,10 +71,9 @@ export class Battlegrounds extends Scene{
         });
         
         newBattlegrounds.on('pointerdown', () => {
-            this.scene.start('newBattlegrounds');
+            this.scene.start('SelectCharacter',{mode: 'battlegrounds'});
         });
-
-        
+         
     }
     update(){
         this.bgClouds.tilePositionX += 0.2

@@ -77,7 +77,6 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         }).setOrigin(0.5).setInteractive();
 
         ironFistBtn.on('pointerdown', () => {
-            const monster = scene.gameState.monsters.pinkMonster;
             pinkMonsterIronFist(scene, true)
             scene.textText.setText('A brutal close-range punch that sends shockwaves through armor. \n• Damage: 25 | Special Cost: 0\n• Type: Melee \n• Effects: Replenishes Special ');
         });
@@ -150,8 +149,8 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
             scene.wind1.stop()
             scene.birdchirping.stop()
             clearCharacterBox(scene)
-            const nextScene = scene.selectedMode === 'battlegrounds' ? 'Battlegrounds' : 'Cinematic';
-            scene.registry.set('selectedCharacter', characterKey);
+            const nextScene = scene.selectedMode === 'battlegrounds' ? 'NewBattlegrounds' : 'Cinematic';
+            scene.registry.set('NewBattlegrounds', characterKey);
             scene.scene.start(nextScene, { selectedCharacter: characterKey });
 
         });

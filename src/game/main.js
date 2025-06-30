@@ -6,7 +6,7 @@ import { AUTO, Game } from 'phaser';
 import { SelectCharacter } from './scenes/SelectCharacter';
 import { Cinematic } from './scenes/Cinematic';
 import {Battlegrounds} from "./scenes/Battlegrounds"
-import {newBattlegrounds} from "./scenes/newBattlegrounds"
+import {NewBattlegrounds} from "./scenes/NewBattlegrounds"
 
 //  Find out more information about the Game Config at:
 //  https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
@@ -28,13 +28,13 @@ const config = {
         }
     },
     scene: [
-        //MainMenu,
-        //SelectCharacter,
+        MainMenu,
+        SelectCharacter,
         //Cinematic,
         //MainGame,
         //GameOver,
         Battlegrounds,
-        //newBattlegrounds
+        NewBattlegrounds
         
        
     ]

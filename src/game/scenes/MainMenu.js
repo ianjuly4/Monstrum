@@ -82,7 +82,7 @@ export class MainMenu extends Scene
         });
         
         battlegrounds.on('pointerdown', () => {
-            this.scene.start('SelectCharacter',{mode: 'battlegrounds'});
+            this.scene.start('Battlegrounds',{mode: 'battlegrounds'});
         });
         
         
