@@ -37,25 +37,46 @@ export class Battlegrounds extends Scene{
 
         mainMenu.once('pointerdown', () => {this.scene.start('MainMenu')});
 
-        
-
         this.add.text(552, 140, 'Monstrum: Battlegrounds', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
         }).setOrigin(0.5);
 
-        const newBattlegrounds = this.add.text(512, 260, 'New Round', {
-            fontFamily: 'Arial Black', fontSize: 28, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        }).setOrigin(0.5).setInteractive();
+        // Description Box
+        const descBoxWidth = 500;
+        const descBoxHeight = 150;
+        const descX = 300;
+        const descY = 180;
 
-        const loadBattlegrounds = this.add.text(512, 340, "Load Round", {
+        const descBackground = this.add.graphics();
+        descBackground.fillStyle(0x000000, 0.7);
+        descBackground.fillRoundedRect(descX, descY, descBoxWidth, descBoxHeight, 10);
+        descBackground.lineStyle(2, 0xffffff);
+        descBackground.strokeRoundedRect(descX, descY, descBoxWidth, descBoxHeight, 10);
+
+        const battlegroundsDescription = 
+        "Step into a relentless arena where survival is the only victory. Face off against wave after wave of monstrous foes in a heart-pounding test of skill and endurance. Snatch powerful upgrades, restore your health in desperate moments, and unleash devastating abilities to turn the tide. Choose your champion, stand your ground, and fight for glory in the ultimate battleground. How long can you survive?";
+
+        this.add.text(descX + 10, descY + 10, battlegroundsDescription, {
+            fontFamily: 'Arial',
+            fontSize: '16px',
+            color: '#ffffff',
+            wordWrap: { width: descBoxWidth - 20 },
+            lineSpacing: 4
+        });
+
+        const newBattlegrounds = this.add.text(512, 380, 'New Round', {
             fontFamily: 'Arial Black', fontSize: 28, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
-        }).setOrigin(0.5).setInteractive()
+        }).setOrigin(0.5).setDepth(1).setInteractive();
+
+        const loadBattlegrounds = this.add.text(512, 440, "Load Round", {
+            fontFamily: 'Arial Black', fontSize: 28, color: '#ffffff',
+            stroke: '#000000', strokeThickness: 8,
+            align: 'center'
+        }).setOrigin(0.5).setDepth(1).setInteractive()
 
         newBattlegrounds.on('pointerover', () => {
             newBattlegrounds.setStyle({ fill: 'brown' }); 

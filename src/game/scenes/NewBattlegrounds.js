@@ -8,6 +8,7 @@ import { startIdleTimer } from "../utilities/startIdleTimer";
 import { magicAnimations } from "../utilities/magicAnimations";
 import { effectsAnimations } from "../utilities/effectsAnimations";
 import { crossBowAnimations } from "../utilities/crossBowAnimations";
+import { battleGroundsMovement } from "../utilities/battleGroundsMovement";
 
 export class NewBattlegrounds extends Scene{
     constructor(){
@@ -26,6 +27,7 @@ export class NewBattlegrounds extends Scene{
         pinkMonsterAnimations(this)
         whiteMonsterAnimations(this)
         blueMonsterAnimations(this)
+        
         
         
         
@@ -51,15 +53,18 @@ export class NewBattlegrounds extends Scene{
 
         platform.refreshBody()
 
+        this.cursors = this.input.keyboard.createCursorKeys()
+
         if(this.selectedCharacter == 'pinkMonster'){
-            const pinkMonster = this.physics.add.sprite(190, 515, 'pinkmonster')
-                .setScale(2)
+            this.pinkMonster = this.physics.add.sprite(140, 500, 'pinkmonster')
+                .setScale(1)
                 .setOrigin(0.5, 1)
                 .setDepth(2)
                 .setInteractive();
 
-            pinkMonster.setCollideWorldBounds(true);
-            this.physics.add.collider(pinkMonster, platforms);
+            this.pinkMonster.setCollideWorldBounds(true);
+            this.physics.add.collider(this.pinkMonster, platforms);
+
         }
        
 
@@ -84,5 +89,9 @@ export class NewBattlegrounds extends Scene{
     }
     update(){
         this.bgClouds.tilePositionX += 0.2
+
+        if(this.pinkMonster){
+            battleGroundsMovement(this, this.pinkMonster)
+        }
     }
 }
