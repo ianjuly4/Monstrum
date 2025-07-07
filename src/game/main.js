@@ -11,6 +11,7 @@ import {NewBattlegrounds} from "./scenes/NewBattlegrounds"
 //  Find out more information about the Game Config at:
 //  https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
 const config = {
+    
     type: AUTO,
     parent: 'game-container',
     scale: {
@@ -24,7 +25,7 @@ const config = {
         arcade: {
             gravity: { y: 200 },
             enableBody: true,
-            //debug: true
+            debug: true
         }
     },
     scene: [

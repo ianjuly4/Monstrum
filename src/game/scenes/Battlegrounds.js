@@ -1,3 +1,4 @@
+//Battlegrounds.js
 import { Scene } from "phaser";
 import { preload } from "../utilities/preload";
 
@@ -29,20 +30,14 @@ export class Battlegrounds extends Scene{
        
 
         //MainMenu button
-        const mainMenu = this.add.text(60, 20, ' Back To Main Menu', {
+        const mainMenu = this.add.text(100, 20, ' Back To Main Menu', {
             fontFamily: 'Arial Black', fontSize: 18, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8
         }).setOrigin(0.5).setInteractive();
 
         mainMenu.once('pointerdown', () => {this.scene.start('MainMenu')});
 
-        //SelectCharacter Button
-        const selectCharacter = this.add.text(220, 20, ' Back To Select Character Screen', {
-            fontFamily: 'Arial Black', fontSize: 18, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8
-        }).setOrigin(0.5).setInteractive();
-
-        selectCharacter.once('pointerdown', () => {this.scene.start('SelectCharacter')});
+        
 
         this.add.text(552, 140, 'Monstrum: Battlegrounds', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
