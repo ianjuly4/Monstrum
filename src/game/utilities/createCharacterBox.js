@@ -77,7 +77,7 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         }).setOrigin(0.5).setInteractive();
 
         ironFistBtn.on('pointerdown', () => {
-            pinkMonsterIronFist(scene, true)
+            pinkMonsterIronFist(scene, true, false)
             scene.textText.setText('A brutal close-range punch that sends shockwaves through armor. \n• Damage: 25 | Special Cost: 0\n• Type: Melee \n• Effects: Replenishes Special ');
         });
         ironFistBtn.description = 'A brutal close-range punch that sends shockwaves through armor. \n• Damage: 25 | Special Cost: 0\n• Type: Melee \n• Effects: Replenishes Special ';

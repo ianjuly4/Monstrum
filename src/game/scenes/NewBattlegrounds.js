@@ -9,6 +9,7 @@ import { magicAnimations } from "../utilities/magicAnimations";
 import { effectsAnimations } from "../utilities/effectsAnimations";
 import { crossBowAnimations } from "../utilities/crossBowAnimations";
 import { battleGroundsMovement } from "../utilities/battleGroundsMovement";
+import { pinkMonsterIronFist } from "../pinkMonster/pinkMonsterIronFist";
 
 export class NewBattlegrounds extends Scene{
     constructor(){
@@ -21,6 +22,7 @@ export class NewBattlegrounds extends Scene{
     preload(){
         preload.call(this)
     }
+    gameState = {}
     create(){
         const { width, height } = this.scale;
         console.log(this.selectedCharacter)
@@ -56,19 +58,24 @@ export class NewBattlegrounds extends Scene{
         platform.refreshBody()
 
         this.cursors = this.input.keyboard.createCursorKeys()
+        this.keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+                this.keyF.on('down', () => {
+            pinkMonsterIronFist(this, false, true);
+        });
+        
+        this.gameState.monsters = {}
 
-        if(this.selectedCharacter == 'pinkMonster'){
-            this.pinkMonster = this.physics.add.sprite(32, 600, 'pinkmonster')
+        if(this.selectedCharacter === 'pinkMonster'){
+            const pinkMonster = this.physics.add.sprite(32, 600, 'pinkmonster')
                 .setScale(2)
                 .setOrigin(0.5, 1)
                 .setDepth(2)
                 .setInteractive();
 
-            this.pinkMonster.setCollideWorldBounds(true);
-            this.pinkMonster.body.setAllowGravity(false); 
-            this.physics.add.collider(this.pinkMonster, platforms);
-            //console.log(this.pinkMonster.x, this.pinkMonster.y)
-
+            pinkMonster.setCollideWorldBounds(true);
+            pinkMonster.body.setAllowGravity(false);
+            this.physics.add.collider(pinkMonster, platforms);
+            this.gameState.monsters.pinkMonster = pinkMonster;
         }
     
         
@@ -90,11 +97,13 @@ export class NewBattlegrounds extends Scene{
        
         
     }
-    update(){
-        this.bgClouds.tilePositionX += 0.2
+    update() {
+        this.bgClouds.tilePositionX += 0.2;
 
-        if(this.pinkMonster){
-            battleGroundsMovement(this, this.pinkMonster)
+        const pinkMonster = this.gameState.monsters?.pinkMonster;
+        if (pinkMonster) {
+            battleGroundsMovement(this, pinkMonster);
         }
     }
+
 }
