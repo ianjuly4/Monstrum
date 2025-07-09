@@ -28,9 +28,6 @@ export class NewBattlegrounds extends Scene{
         whiteMonsterAnimations(this)
         blueMonsterAnimations(this)
         
-        
-        
-        
         //backgrounds
         this.add.image(0, 0, 'nature2_1').setOrigin(0).setDepth(-2).setDisplaySize(width, height);
         
@@ -39,35 +36,41 @@ export class NewBattlegrounds extends Scene{
             .setDepth(-1)
             .setScale(2)
 
-        this.add.image(0, -100, 'nature2_3').setOrigin(0).setDepth(0).setDisplaySize(width, height)
-        this.add.image(0, -300, 'nature2_4')
+        this.add.image(0, -150, 'nature2_3').setOrigin(0).setDepth(0).setDisplaySize(width, height)
+        this.add.image(0, -550, 'nature2_4')
         .setOrigin(0, 0)
         .setDepth(1)
-        .setDisplaySize(width, 900)
+        .setDisplaySize(width, 1150)
 
         // Platform 
         const platforms = this.physics.add.staticGroup()
-        const platform = platforms.create(600, 600, 'grass_foreground')
+        const platform = platforms.create(600, 620, 'grass_foreground')
             .setDisplaySize(width, 30)
             .setVisible(false)
 
+        const topPlatform = platforms.create(600, 230, 'grass_foreground')
+            .setDisplaySize(width, 30)
+            .setVisible(false)
+
+        topPlatform.refreshBody()
         platform.refreshBody()
 
         this.cursors = this.input.keyboard.createCursorKeys()
 
         if(this.selectedCharacter == 'pinkMonster'){
-            this.pinkMonster = this.physics.add.sprite(140, 500, 'pinkmonster')
-                .setScale(1)
+            this.pinkMonster = this.physics.add.sprite(32, 600, 'pinkmonster')
+                .setScale(2)
                 .setOrigin(0.5, 1)
                 .setDepth(2)
                 .setInteractive();
 
             this.pinkMonster.setCollideWorldBounds(true);
+            this.pinkMonster.body.setAllowGravity(false); 
             this.physics.add.collider(this.pinkMonster, platforms);
+            //console.log(this.pinkMonster.x, this.pinkMonster.y)
 
         }
-       
-
+    
         
          //MainMenu button
         const mainMenu = this.add.text(100, 20, ' Back To Main Menu', {

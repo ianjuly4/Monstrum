@@ -25,6 +25,7 @@ export function preload() {
     this.load.image('pinkmonster', 'assets/heros/1 Pink_Monster/Pink_Monster.png');
     this.load.image('whitemonster', 'assets/heros/2 Owlet_Monster/Owlet_Monster.png');
     this.load.image('bluemonster', 'assets/heros/3 Dude_Monster/Dude_Monster.png');
+    this.load.spritesheet('pinkMonsterRun', 'assets/heros/1 Pink_Monster/Pink_Monster_Run_6.png', {frameWidth: 192/6, frameHeight:32})
 
 
     //idles
@@ -71,7 +72,7 @@ export function preload() {
     //pink monster attacks
     this.load.spritesheet('pinkmonster_swordAttack2', 'assets/swordAttacks/Attack2.png', {frameWidth:42, frameHeight:42})
     this.load.spritesheet('pinkmonster_swordAttack1', 'assets/swordAttacks/Attack1.png', {frameWidth:42, frameHeight: 42})
-    this.load.spritesheet('pinkmonster_meleAttack2', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack2_6.png', {frameWidth: 32, frameHeight: 32})
+    this.load.spritesheet('pinkmonster_meleAttack2', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack2_6.png', {frameWidth: 192/6, frameHeight: 32})
     this.load.spritesheet('pinkmonster_meleAttack1', 'assets/heros/1 Pink_Monster/Pink_Monster_Attack1_4.png',{frameWidth: 32, frameHeight: 32})
     
 
