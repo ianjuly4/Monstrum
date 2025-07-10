@@ -7,7 +7,7 @@ export function pinkMonsterAnimations(scene){
             frames: anims.generateFrameNumbers('pinkmonster_meleAttack2', {
                 start: 0, end: 5
             }),
-            frameRate: 6,
+            frameRate: 8,
             repeat: 0
         });
     }
@@ -65,5 +65,26 @@ export function pinkMonsterAnimations(scene){
             frameRate: 8,
             repeat: -1
         });
+    }
+
+    if(!anims.exists('runningSwordAttack1')){
+        anims.create({
+            key: 'runningSwordAttack1',
+            frames: anims.generateFrameNumbers('pinkmonster_runningSwordAttack1', {
+                start: 0, end: 5
+            }),
+            frameRate: 8,
+            repeat: 0
+        })
+    }
+    if(!anims.exists('runningSwordAttack2')){
+        anims.create({
+            key: 'runningSwordAttack2',
+            frames: anims.generateFrameNumbers('pinkmonster_runningSwordAttack2',{
+                start: 0, end: 5
+            }),
+            frameRate: 8,
+            repeat: 0
+        })
     }
 }

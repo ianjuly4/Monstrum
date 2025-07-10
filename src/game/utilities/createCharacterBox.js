@@ -92,9 +92,7 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         });
 
         piercingStabBtn.on('pointerdown', () => {
-           
-        
-            pinkMonsterPiercingStab(scene, true);
+            pinkMonsterPiercingStab(scene, true, false);
             scene.textText.setText('A lightning-fast thrust aimed at weak points.\n• Damage: 35 | Special Cost: 15 \n• Type: Weapon Attack \n• Effects: Shield breaker')
         });
 
@@ -113,7 +111,7 @@ export function createCharacterBox(scene, x, y, width, height, text, characterKe
         crescentSlashBtn.on('pointerdown', ()=>{
             const monster = scene.gameState.monsters.pinkMonster;
             
-            pinkMonsterCrescentSlash(scene, true)
+            pinkMonsterCrescentSlash(scene, true, false)
             scene.textText.setText('A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 | Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Ignites Enemies On Impact Causing Residual Burn Damage. ')
         })
         crescentSlashBtn.description = 'A sweeping arc of steel cuts through all in its path. Hits multiple enemies.\n• Damage: 35 | Special Cost: 25 \n• Type: Weapon Attack \n• Effects: Ignites Enemies On Impact Causing Residual Burn Damage.';

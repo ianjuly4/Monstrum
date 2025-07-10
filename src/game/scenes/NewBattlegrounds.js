@@ -10,6 +10,10 @@ import { effectsAnimations } from "../utilities/effectsAnimations";
 import { crossBowAnimations } from "../utilities/crossBowAnimations";
 import { battleGroundsMovement } from "../utilities/battleGroundsMovement";
 import { pinkMonsterIronFist } from "../pinkMonster/pinkMonsterIronFist";
+import { pinkMonsterPiercingStab } from "../pinkMonster/pinkMonsterPiercingStab";
+import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
+import { pinkMonsterCrescentSlash } from "../pinkMonster/pinkMonsterCrescentSlash";
+
 
 export class NewBattlegrounds extends Scene{
     constructor(){
@@ -57,12 +61,8 @@ export class NewBattlegrounds extends Scene{
         topPlatform.refreshBody()
         platform.refreshBody()
 
-        this.cursors = this.input.keyboard.createCursorKeys()
-        this.keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
-                this.keyF.on('down', () => {
-            pinkMonsterIronFist(this, false, true);
-        });
-        
+        this.gameState.isAttacking = false;
+
         this.gameState.monsters = {}
 
         if(this.selectedCharacter === 'pinkMonster'){
@@ -76,9 +76,20 @@ export class NewBattlegrounds extends Scene{
             pinkMonster.body.setAllowGravity(false);
             this.physics.add.collider(pinkMonster, platforms);
             this.gameState.monsters.pinkMonster = pinkMonster;
-        }
-    
+            pinkMonster.state = {
+                isAttacking: false,
+                isMoving: false,
+                //currentAction: null
+            };
+
         
+        }
+
+        this.cursors = this.input.keyboard.createCursorKeys()
+        this.keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
+
          //MainMenu button
         const mainMenu = this.add.text(100, 20, ' Back To Main Menu', {
             fontFamily: 'Arial Black', fontSize: 18, color: '#ffffff',
@@ -95,15 +106,26 @@ export class NewBattlegrounds extends Scene{
 
         selectedCharacter.once('pointerdown', () => {this.scene.start('SelectCharacter')});
        
-        
+
     }
     update() {
         this.bgClouds.tilePositionX += 0.2;
-
-        const pinkMonster = this.gameState.monsters?.pinkMonster;
-        if (pinkMonster) {
-            battleGroundsMovement(this, pinkMonster);
+        
+        battleGroundsMovement(this);
+        if (Phaser.Input.Keyboard.JustDown(this.keyF)){
+            if(this.gameState.monsters.pinkMonster){
+                pinkMonsterIronFist(this, false, true)
+                }
+        }
+        if(Phaser.Input.Keyboard.JustDown(this.keyD)){
+            if(this.gameState.monsters.pinkMonster){
+                pinkMonsterPiercingStab(this, false, true)
+                }
+        }
+        if(Phaser.Input.Keyboard.JustDown(this.keyS)){
+            if(this.gameState.monsters.pinkMonster){
+                pinkMonsterCrescentSlash(this, false, true)
+            }
         }
     }
-
 }
