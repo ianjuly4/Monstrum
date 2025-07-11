@@ -1,4 +1,5 @@
 import { setMonsterAnimation } from "./setMonsterAnimation";
+
 export function battleGroundsMovement(scene) {
     const { monsters } = scene.gameState;
     const pinkMonster = monsters?.pinkMonster;

@@ -13,6 +13,9 @@ import { pinkMonsterIronFist } from "../pinkMonster/pinkMonsterIronFist";
 import { pinkMonsterPiercingStab } from "../pinkMonster/pinkMonsterPiercingStab";
 import { setMonsterAnimation } from "../utilities/setMonsterAnimation";
 import { pinkMonsterCrescentSlash } from "../pinkMonster/pinkMonsterCrescentSlash";
+import { waveManager } from "../utilities/enemies/waveManager";
+import { spawnEnemiesForWave } from "../utilities/enemies/spawnEnemiesForWave";
+import {updateMonsterBars} from "../utilities/updateMonsterBars"
 
 
 export class NewBattlegrounds extends Scene{
@@ -27,6 +30,7 @@ export class NewBattlegrounds extends Scene{
         preload.call(this)
     }
     gameState = {}
+
     create(){
         const { width, height } = this.scale;
         console.log(this.selectedCharacter)
@@ -64,6 +68,8 @@ export class NewBattlegrounds extends Scene{
         this.gameState.isAttacking = false;
 
         this.gameState.monsters = {}
+        
+
 
         if(this.selectedCharacter === 'pinkMonster'){
             const pinkMonster = this.physics.add.sprite(32, 600, 'pinkmonster')
@@ -79,10 +85,21 @@ export class NewBattlegrounds extends Scene{
             pinkMonster.state = {
                 isAttacking: false,
                 isMoving: false,
-                //currentAction: null
+                hp: 100,
+                maxHp: 100,
+                special: 100,
+                maxSpecial: 100
             };
+            const healthBar = this.add.graphics().setDepth(3);
+            pinkMonster.state.healthBar = healthBar;
 
-        
+            // Special meter
+            const specialBar = this.add.graphics().setDepth(3);
+            pinkMonster.state.specialBar = specialBar;
+
+            // Initial draw
+            updateMonsterBars(this, pinkMonster);
+
         }
 
         this.cursors = this.input.keyboard.createCursorKeys()
@@ -105,27 +122,40 @@ export class NewBattlegrounds extends Scene{
         }).setOrigin(0.5).setInteractive();
 
         selectedCharacter.once('pointerdown', () => {this.scene.start('SelectCharacter')});
-       
 
+        this.gameState.wave = {
+        current: 1,
+        activeEnemies: [],
+        inProgress: false,
+        };
+        waveManager.startWave(this)
+        
     }
     update() {
-        this.bgClouds.tilePositionX += 0.2;
-        
-        battleGroundsMovement(this);
-        if (Phaser.Input.Keyboard.JustDown(this.keyF)){
-            if(this.gameState.monsters.pinkMonster){
-                pinkMonsterIronFist(this, false, true)
-                }
-        }
-        if(Phaser.Input.Keyboard.JustDown(this.keyD)){
-            if(this.gameState.monsters.pinkMonster){
-                pinkMonsterPiercingStab(this, false, true)
-                }
-        }
-        if(Phaser.Input.Keyboard.JustDown(this.keyS)){
-            if(this.gameState.monsters.pinkMonster){
-                pinkMonsterCrescentSlash(this, false, true)
-            }
+    this.bgClouds.tilePositionX += 0.2;
+
+    battleGroundsMovement(this);
+
+    if (Phaser.Input.Keyboard.JustDown(this.keyF)) {
+        if (this.gameState.monsters.pinkMonster) {
+        pinkMonsterIronFist(this, false, true);
         }
     }
+
+    if (Phaser.Input.Keyboard.JustDown(this.keyD)) {
+        if (this.gameState.monsters.pinkMonster) {
+        pinkMonsterPiercingStab(this, false, true);
+        }
+    }
+
+    if (Phaser.Input.Keyboard.JustDown(this.keyS)) {
+        if (this.gameState.monsters.pinkMonster) {
+        pinkMonsterCrescentSlash(this, false, true);
+        }
+    }
+
+    // ✅ Let waveManager handle when to start new waves
+    waveManager.checkCompletion(this);
+    }
+
 }
