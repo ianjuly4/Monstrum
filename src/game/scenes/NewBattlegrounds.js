@@ -16,6 +16,7 @@ import { pinkMonsterCrescentSlash } from "../pinkMonster/pinkMonsterCrescentSlas
 import { waveManager } from "../utilities/enemies/waveManager";
 import { spawnEnemiesForWave } from "../utilities/enemies/spawnEnemiesForWave";
 import {updateMonsterBars} from "../utilities/updateMonsterBars"
+import { enemyAnimations } from "../utilities/enemies/enemyAnimations";
 
 
 export class NewBattlegrounds extends Scene{
@@ -37,6 +38,7 @@ export class NewBattlegrounds extends Scene{
         pinkMonsterAnimations(this)
         whiteMonsterAnimations(this)
         blueMonsterAnimations(this)
+        enemyAnimations(this);
         
         //backgrounds
         this.add.image(0, 0, 'nature2_1').setOrigin(0).setDepth(-2).setDisplaySize(width, height);

@@ -1,11 +1,6 @@
 export function setMonsterAnimation(scene, monster, textureKey, animKey) {
     if (!scene || !scene.time || !monster) return;
 
-    //console.log('Playing animation:', animKey, 'on', monster.texture.key);
-    //console.log('Calling IronFist with triggered:', triggered, 'selected:', selected);
-    //console.log('Animation exists:', scene.anims.exists(animKey));
-    //console.log(monster.texture.key)
-
     // Only change texture if needed
     if (monster.texture.key !== textureKey) {
         monster.setTexture(textureKey);

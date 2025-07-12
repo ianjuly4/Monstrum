@@ -13,8 +13,6 @@ import { effectsAnimations } from "../utilities/effectsAnimations";
 import { blueMonsterAnimations } from "../blueMonster/blueMonsterAnimations";
 import { crossBowAnimations } from "../utilities/crossBowAnimations";
 
-
-
 export class SelectCharacter extends Scene {
     constructor() {
         super('SelectCharacter');

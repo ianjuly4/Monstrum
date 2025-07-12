@@ -100,5 +100,16 @@ export function preload() {
     this.load.audio('lazerBeam', 'assets/soundEffects/launches/rlaunch.wav')
     this.load.audio('petrificationSound','assets/soundEffects/soundEffects/EM_EARTH_LAUNCH_01.wav')
     this.load.audio('lightningSound', 'assets/soundEffects/soundEffects/Lightning Spell Impacts/Lightning Spell Impact 1.wav')
+
+    //enemies
+    this.load.image('skeleton', 'assets/enemies/skeleton/Skeleton.png', {frameWidth: 42, frameHeight: 42} )
+    this.load.spritesheet('skeletonWalk', 'assets/enemies/skeleton/Skeleton_walk.png', {frameWidth: 252/6, frameHeight: 42})
+    this.load.spritesheet('skeletonIdle', 'assets/enemies/skeleton/Skeleton_idle.png', {frameWidth: 168/4, frameHeight: 42})
+    this.load.spritesheet('skeletonHurt', 'assets/enemies/skeleton/Skeleton_hurt.png', {frameWidth: 168/4, frameHeight: 42})
+    this.load.spritesheet('skeletonDeath', 'assets/enemies/skeleton/Skeleton_death.png', {frameWidth: 168/4, frameHeight: 42})
+    this.load.spritesheet('skeletonAttack', 'assets/enemies/skeleton/Skeleton_attack.png', {frameWidth: 168/4, frameHeight: 42})
 }
+
+
+
 
