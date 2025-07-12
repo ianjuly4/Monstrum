@@ -102,7 +102,7 @@ export function preload() {
     this.load.audio('lightningSound', 'assets/soundEffects/soundEffects/Lightning Spell Impacts/Lightning Spell Impact 1.wav')
 
     //enemies
-    this.load.image('skeleton', 'assets/enemies/skeleton/Skeleton.png', {frameWidth: 42, frameHeight: 42} )
+    this.load.image('skeleton', 'assets/enemies/skeleton/Skeleton.png' )
     this.load.spritesheet('skeletonWalk', 'assets/enemies/skeleton/Skeleton_walk.png', {frameWidth: 252/6, frameHeight: 42})
     this.load.spritesheet('skeletonIdle', 'assets/enemies/skeleton/Skeleton_idle.png', {frameWidth: 168/4, frameHeight: 42})
     this.load.spritesheet('skeletonHurt', 'assets/enemies/skeleton/Skeleton_hurt.png', {frameWidth: 168/4, frameHeight: 42})

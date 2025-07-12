@@ -86,11 +86,13 @@ export class NewBattlegrounds extends Scene{
             this.gameState.monsters.pinkMonster = pinkMonster;
             pinkMonster.state = {
                 isAttacking: false,
+                attackDamage: 0,
                 isMoving: false,
                 hp: 100,
                 maxHp: 100,
                 special: 100,
                 maxSpecial: 100
+
             };
             const healthBar = this.add.graphics().setDepth(3);
             pinkMonster.state.healthBar = healthBar;
@@ -130,6 +132,7 @@ export class NewBattlegrounds extends Scene{
         activeEnemies: [],
         inProgress: false,
         };
+        
         waveManager.startWave(this)
         
     }
@@ -156,7 +159,7 @@ export class NewBattlegrounds extends Scene{
         }
     }
 
-    // ✅ Let waveManager handle when to start new waves
+   
     waveManager.checkCompletion(this);
     }
 

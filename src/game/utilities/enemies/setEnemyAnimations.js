@@ -1,4 +1,4 @@
-// utils/setMonsterAnimation.js
+// utils/enemies/setMonsterAnimation.js
 export function setEnemyAnimations(scene, monster, textureKey, animKey) {
   if (!scene || !scene.time || !monster) return;
 

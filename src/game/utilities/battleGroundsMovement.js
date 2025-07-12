@@ -7,7 +7,8 @@ export function battleGroundsMovement(scene) {
     const cursors = scene.cursors;
     const speed = 200;
 
-    if (!pinkMonster) return;
+    if (!pinkMonster || !pinkMonster.body) return;
+
 
     let velocityX = 0;
     let velocityY = 0;
